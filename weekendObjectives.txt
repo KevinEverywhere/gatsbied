@@ -1,0 +1,25 @@
+Scope out the mechanics of the app, componentalize functionality and upload to codepen. Build the app using gatsby or next.
+
+HomeScreen
+   NavComponent (aframe)
+   MainScreen
+   Details
+   Share/Interact
+NavComponent
+   Leads to Home
+   Leads to Work/Resume
+   Leads to Creative
+   Leads to Contact
+   Leads to Former Content
+MainScreen
+   Describes Kevin and the site
+   Description of work/resume
+   Aframe 360 with links to creative (images, videos, interactive)
+   Form to contact with appropriate elements
+   Links to former planetkevin
+Details
+   Link to current article 
+   Populated with work details
+   Description of creative content
+   TBD
+   Description of past content
