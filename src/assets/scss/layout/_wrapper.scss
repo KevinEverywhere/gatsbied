@@ -36,5 +36,7 @@
 
 		&.page {
 			@include vendor('justify-content', 'flex-start');
+			margin-top: -4.5rem;
+			padding: 4rem 0rem;
 		}
 	}

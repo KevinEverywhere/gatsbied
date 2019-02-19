@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
 
 const Header = (props) => (
     <header id="header" style={props.timeout ? {display: 'none'} : {}}>
@@ -19,7 +20,7 @@ const Header = (props) => (
                 playing keytar and bicycling
              </p>
              <p className="singleSpace">
-             when not pushing content to clouds.
+             when not pushing cloud content.
               </p>
               <p>
                 ©2019 Kevin Ready
@@ -28,9 +29,9 @@ const Header = (props) => (
         </div>
         <nav>
             <ul>
-                <li><a href="javascript:;" onClick={() => {props.onOpenArticle('intro')}}>Work</a></li>
-                <li><a href="javascript:;" onClick={() => {props.onOpenArticle('work')}}>Creative</a></li>
-                <li><a href="javascript:;" onClick={() => {props.onOpenArticle('contact')}}>Contact</a></li>
+                <li><Link to="/work">Work</Link></li>
+                <li><Link to="/creative">Creative</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
             </ul>
         </nav>
     </header>

@@ -2,10 +2,10 @@ import React from 'react'
 import Layout from '../components/layout'
 
 import SmallHeader from '../components/SmallHeader'
-import MainWork from '../components/MainWork'
+import MainContact from '../components/MainContact'
 import Footer from '../components/Footer'
 
-class WorkPage extends React.Component {
+class ContactPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -92,21 +92,23 @@ class WorkPage extends React.Component {
   render() {
     return (
       <Layout location={this.props.location}>
-        <div id="wrapper" className="page">
-          <SmallHeader onOpenArticle={this.handleOpenArticle} timeout={this.state.timeout} />
-          <MainWork
-            timeout={this.state.timeout}
-            articleTimeout={this.state.articleTimeout}
-            article={this.state.article}
-            onCloseArticle={this.handleCloseArticle}
-            setWrapperRef={this.setWrapperRef}
-          />
-          <Footer timeout={this.state.timeout} />
+        <div className={`body ${this.state.loading} ${this.state.isArticleVisible ? 'is-article-visible' : ''}`}>
+          <div id="wrapper" className="page">
+            <SmallHeader onOpenArticle={this.handleOpenArticle} timeout={this.state.timeout} />
+            <MainContact
+              timeout={this.state.timeout}
+              articleTimeout={this.state.articleTimeout}
+              article={this.state.article}
+              onCloseArticle={this.handleCloseArticle}
+              setWrapperRef={this.setWrapperRef}
+            />
+            <Footer timeout={this.state.timeout} />
+          </div>
+          <div id="bg"></div>
         </div>
-        <div id="bg"></div>
       </Layout>
     )
   }
 }
 
-export default WorkPage
+export default ContactPage

@@ -1,25 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-class MainWork extends React.Component {
+class MainContact extends React.Component {
   constructor(props){
     super();
   }
   render() {
-
-    let close = <div className="close" onClick={() => {this.props.onCloseArticle()}}></div>
-
     return (
       <main>
-      {close}
-      Main work div
-      {this.props.children}
+      Main Contact div
       </main>
     )
   }
 }
 
-MainWork.propTypes = {
+MainContact.propTypes = {
   route: PropTypes.object,
   article: PropTypes.string,
   articleTimeout: PropTypes.bool,
@@ -28,4 +23,4 @@ MainWork.propTypes = {
   setWrapperRef: PropTypes.func.isRequired,
 }
 
-export default MainWork
+export default MainContact

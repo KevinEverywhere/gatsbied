@@ -61,6 +61,7 @@ class IndexPage extends React.Component {
   }
 
   handleCloseArticle() {
+    
 
     this.setState({
       articleTimeout: !this.state.articleTimeout

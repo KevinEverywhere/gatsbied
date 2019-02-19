@@ -15,12 +15,14 @@
 			'filter #{_duration(article)} ease-in-out',
 			'opacity #{_duration(article)} ease-in-out',
 		));
+		@include vendor('text-shadow', '2.5px 1.5px 1.5px #000');
 		background-image: -moz-radial-gradient(rgba(0,0,0,0.25) 25%, rgba(0,0,0,0) 55%);
 		background-image: -webkit-radial-gradient(rgba(0,0,0,0.25) 25%, rgba(0,0,0,0) 55%);
 		background-image: -ms-radial-gradient(rgba(0,0,0,0.25) 25%, rgba(0,0,0,0) 55%);
 		background-image: radial-gradient(rgba(0,0,0,0.25) 25%, rgba(0,0,0,0) 55%);
 		max-width: 100%;
 		text-align: center;
+		padding: 1.5rem 0;
 
 		> * {
 			@include vendor('transition', 'opacity #{_duration(article)} ease-in-out');
@@ -46,12 +48,29 @@
 				display: none;
 			}
 		}
+		.smlogo{
+			width: 2.5rem;
+			height: 2.5rem;
+			line-height: 2.5rem;
+			border: solid _size(border-width) _palette(border);
+			border-radius: 100%;
+			background-color:rgba(33, 33, 33, 0.3);
+			margin: 0.25rem;
+			@include vendor('display', 'inline-block');
+
+			.icon {
+				&:before {
+					font-size: 1rem;
+				}
+			}
+		}
 
 		.logo {
 			width: 5.5rem;
 			height: 5.5rem;
 			line-height: 5.5rem;
 			border: solid _size(border-width) _palette(border);
+			background-color:rgba(33, 33, 33, 0.1);
 			border-radius: 100%;
 
 			.icon {
@@ -88,6 +107,7 @@
 				text-transform: uppercase;
 				letter-spacing: _font(letter-spacing);
 				font-size: 0.8rem;
+				font-weight:700;
 				line-height: 1.2;
 			}
 			.singleSpace{
@@ -98,10 +118,9 @@
 			display:none;
 		}
 
-
 		nav {
 			ul {
-				@include vendor('display', 'flex');
+				@include vendor('display', 'inline-flex');
 				margin-bottom: 0;
 				list-style: none;
 				padding-left: 0;
@@ -116,14 +135,14 @@
 						border-left: 0;
 					}
 
-					a {
+					a, Link {
 						display: block;
-						min-width: 7.5rem;
 						height: 2.75rem;
 						line-height: 2.75rem;
-						padding: 0 1.25rem 0 (1.25rem + _font(letter-spacing));
+						padding: 0 1rem 0 (1rem + _font(letter-spacing));
 						text-transform: uppercase;
 						letter-spacing: _font(letter-spacing);
+						font-weight:700;
 						font-size: 0.8rem;
 						border-bottom: 0;
 
@@ -194,6 +213,7 @@
 		}
 
 		@include breakpoint(small) {
+			padding: 1.5rem 0;
 			> * {
 				margin-top: 2rem;
 
@@ -240,34 +260,5 @@
 				}
 			}
 
-			nav {
-				ul {
-					@include vendor('flex-direction', 'column');
-					min-width: 10rem;
-					max-width: 100%;
-
-					li {
-						border-left: 0;
-						border-top: solid _size(border-width) _palette(border);
-
-						&:first-child {
-							border-top: 0;
-						}
-
-						a {
-							height: 3rem;
-							line-height: 3rem;
-							min-width: 0;
-							width: 100%;
-						}
-					}
-				}
-
-				&.use-middle {
-					&:after {
-						display: none;
-					}
-				}
-			}
 		}
 	}
