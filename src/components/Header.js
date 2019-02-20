@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
+import SectionChooser from './SectionChooser'
 
 const Header = (props) => (
     <header id="header" style={props.timeout ? {display: 'none'} : {}}>
@@ -27,13 +28,7 @@ const Header = (props) => (
               </p>
           </div>
         </div>
-        <nav>
-            <ul>
-                <li><Link to="/work">Work</Link></li>
-                <li><Link to="/creative">Creative</Link></li>
-                <li><Link to="/contact">Contact</Link></li>
-            </ul>
-        </nav>
+        <SectionChooser />
     </header>
 )
 
