@@ -1,22 +1,27 @@
 {
-  "name": "gatsby-starter-dimension-v2",
-  "description": "Gatsby Starter - Dimension V2",
+  "name": "gatsbied",
+  "description": "Kevin Ready's personal and business website, from a Hunter Chang base design",
   "version": "1.0.0",
-  "author": "Hunter Chang",
+  "author": "Kevin Ready",
   "dependencies": {
     "gatsby": "^2.0.76",
     "gatsby-plugin-manifest": "^2.0.9",
     "gatsby-plugin-offline": "^2.0.16",
     "gatsby-plugin-react-helmet": "3.0.6",
     "gatsby-plugin-sass": "^2.0.7",
+    "gatsby-source-graphql": "2.0.10",
     "gh-pages": "2.0.1",
+    "graphcool": "0.11.6",
     "node-sass": "^4.11.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-helmet": "^5.2.0"
+    "react-helmet": "^5.2.0",
+    "redux": "4.0.1",
+    "vue": "2.6.6"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "Kevin Ready"
   ],
   "license": "MIT",
   "scripts": {

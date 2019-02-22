@@ -8,6 +8,16 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     {
+      resolve: "gatsby-source-graphql",
+      options: {
+        // This type will contain remote schema Query type
+        typeName: "SWAPI",
+        // This is the field under which it's accessible
+        fieldName: "swapi",
+        // URL to query from
+        url: "https://api.graphcms.com/simple/v1/swapi",
+      },
+    },{
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: 'PlanetKevin',
