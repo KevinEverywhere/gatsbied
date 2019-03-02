@@ -7,7 +7,7 @@ import MainWork from '../components/MainWork'
 import Footer from '../components/Footer'
 import { JobJSON } from '../assets/data/linkedIn'
 
-class WorkPage extends React.Component {
+class RecommendationsPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -15,7 +15,7 @@ class WorkPage extends React.Component {
       active: false,
       jobs: null,
       recommendations: null,
-      isSelected: 'jobs',
+      isSelected: 'recommendations',
       loading: 'is-loading'
     }
     this.setWrapperRef = this.setWrapperRef.bind(this);
@@ -65,7 +65,7 @@ class WorkPage extends React.Component {
   }
 }
 
-export default WorkPage
+export default RecommendationsPage
 //
 // return (
 //   <StaticQuery

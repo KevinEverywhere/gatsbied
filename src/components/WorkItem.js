@@ -9,7 +9,7 @@ class WorkItem extends React.Component {
     const start='  • ';
     const end='  ';
     const divider = ' • '
-    return str.replace(start, '\n').replace(end, '\n').replace(divider, ', ');
+    return str; //.replace(start, '\n').replace(end, '\n').replace(divider, ', ');
   }
   render() {
       // return(
@@ -31,9 +31,10 @@ WorkItem.propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
     location: PropTypes.string,
-    started: PropTypes.string,
-    finished: PropTypes.string,
   })
 }
 
 export default WorkItem
+
+// started: PropTypes.string,
+// finished: PropTypes.string,
