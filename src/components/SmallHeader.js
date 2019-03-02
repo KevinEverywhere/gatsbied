@@ -3,7 +3,7 @@ import SectionChosen from './SectionChosen'
 
 const SmallHeader = (props) => (
     <header id="header" style={props.timeout ? {display: 'none'} : {}}>
-      <SectionChosen { ...props } />
+      <SectionChosen { ...props } chosen={props.chosen} />
     </header>
 )
 

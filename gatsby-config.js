@@ -17,7 +17,7 @@ module.exports = {
         // URL to query from
         url: "https://api.graphcms.com/simple/v1/swapi",
       },
-    },{
+    }, {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: 'PlanetKevin',
@@ -31,7 +31,16 @@ module.exports = {
         include_favicon: true,
       },
     },
-    'gatsby-plugin-sass',
-    'gatsby-plugin-offline'
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/assets/data/`,
+        name: 'linkedIn',
+      },
+    },
+    `gatsby-transformer-json`,
+    `gatsby-transformer-remark`,
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-offline`
   ],
 }

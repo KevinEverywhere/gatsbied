@@ -1,107 +1,61 @@
 import React from 'react'
+// import WorkLayout from '../components/WorkLayout'
 import Layout from '../components/layout'
 
 import SmallHeader from '../components/SmallHeader'
 import MainWork from '../components/MainWork'
 import Footer from '../components/Footer'
+import { JobJSON } from '../assets/data/linkedIn'
 
 class WorkPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isArticleVisible: false,
-      timeout: false,
-      articleTimeout: false,
-      article: '',
+      position: 0,
+      active: false,
+      jobs: null,
+      recommendations: null,
       loading: 'is-loading'
     }
-    this.handleOpenArticle = this.handleOpenArticle.bind(this)
-    this.handleCloseArticle = this.handleCloseArticle.bind(this)
     this.setWrapperRef = this.setWrapperRef.bind(this);
-    this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
   componentDidMount () {
     this.timeoutId = setTimeout(() => {
-        this.setState({loading: ''});
+        this.setState({
+          loading: '',
+          jobs: JobJSON.jobs,
+          recommendations: JobJSON.recommendations,
+        });
     }, 100);
-    document.addEventListener('mousedown', this.handleClickOutside);
   }
 
   componentWillUnmount () {
     if (this.timeoutId) {
         clearTimeout(this.timeoutId);
     }
-    document.removeEventListener('mousedown', this.handleClickOutside);
   }
 
   setWrapperRef(node) {
     this.wrapperRef = node;
   }
 
-  handleOpenArticle(article) {
-
+  selectPosition(position) {
     this.setState({
-      isArticleVisible: !this.state.isArticleVisible,
-      article
+      currentPosition: position
     })
-
-    setTimeout(() => {
-      this.setState({
-        timeout: !this.state.timeout
-      })
-    }, 325)
-
-    setTimeout(() => {
-      this.setState({
-        articleTimeout: !this.state.articleTimeout
-      })
-    }, 350)
-
-  }
-
-  handleCloseArticle() {
-
-    this.setState({
-      articleTimeout: !this.state.articleTimeout
-    })
-
-    setTimeout(() => {
-      this.setState({
-        timeout: !this.state.timeout
-      })
-    }, 325)
-
-    setTimeout(() => {
-      this.setState({
-        isArticleVisible: !this.state.isArticleVisible,
-        article: ''
-      })
-    }, 350)
-
-  }
-
-  handleClickOutside(event) {
-    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
-      if (this.state.isArticleVisible) {
-        this.handleCloseArticle();
-      }
-    }
   }
 
   render() {
+    console.log(this.state.jobs);
     return (
-      <Layout location={this.props.location}>
+      <Layout location={this.props.location} position={this.state.position}>
         <div id="wrapper" className="page">
-          <SmallHeader onOpenArticle={this.handleOpenArticle} timeout={this.state.timeout} />
-          <MainWork
-            timeout={this.state.timeout}
-            articleTimeout={this.state.articleTimeout}
-            article={this.state.article}
-            onCloseArticle={this.handleCloseArticle}
-            setWrapperRef={this.setWrapperRef}
+          <SmallHeader active="work" />
+          <MainWork jobs={this.state.jobs} recommendations={this.state.recommendations}
+            position={this.state.position}
           />
-          <Footer timeout={this.state.timeout} />
+          <Footer  />
         </div>
         <div id="bg"></div>
       </Layout>
@@ -110,3 +64,34 @@ class WorkPage extends React.Component {
 }
 
 export default WorkPage
+//
+// return (
+//   <StaticQuery
+//     query={graphql`
+//       query SiteTitleQuery {
+//         site {
+//           siteMetadata {
+//             title
+//           }
+//         }
+//       }
+//     `}
+//     render={data => (
+//       <>
+//         <Helmet
+//           title={data.site.siteMetadata.title}
+//           meta={[
+//             { name: 'description', content: 'Kevin Ready is a developer, musician and adventurist.' },
+//             { name: 'keywords', content: 'freelance,react,node,javascript,contractor,developer' },
+//           ]}
+//         >
+//           <html lang="en" />
+//           <meta name="theme-color" content="#000000" />
+//           <meta name="apple-mobile-web-app-capable" content="yes" />
+//           <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+//           <meta name="description" content="Kevin Ready | Creativist" />
+//         </Helmet>
+//         {content}
+//       </>
+//     )}
+//   />
