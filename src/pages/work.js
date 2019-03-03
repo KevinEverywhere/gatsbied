@@ -4,6 +4,7 @@ import Layout from '../components/layout'
 
 import SmallHeader from '../components/SmallHeader'
 import MainWork from '../components/MainWork'
+import ItemChooser from '../components/ItemChooser'
 import Footer from '../components/Footer'
 import { JobJSON } from '../assets/data/linkedIn'
 
@@ -53,7 +54,7 @@ class WorkPage extends React.Component {
     return (
       <Layout location={this.props.location} position={this.state.position}>
         <div id="wrapper" className="page">
-          <SmallHeader active="work" />
+          <SmallHeader active="work" chosen={this.state.isSelected} />
           <MainWork jobs={this.state.jobs} recommendations={this.state.recommendations}
             position={this.state.position} isSelected={this.state.isSelected}
           />

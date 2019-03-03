@@ -94,7 +94,7 @@ class CreativePage extends React.Component {
       <Layout location={this.props.location}>
         <div className={`body ${this.state.loading} ${this.state.isArticleVisible ? 'is-article-visible' : ''}`}>
           <div id="wrapper" className="page">
-            <SmallHeader onOpenArticle={this.handleOpenArticle} timeout={this.state.timeout} />
+            <SmallHeader active="creative" chosen="" onOpenArticle={this.handleOpenArticle} timeout={this.state.timeout} />
             <MainCreative
               timeout={this.state.timeout}
               articleTimeout={this.state.articleTimeout}
