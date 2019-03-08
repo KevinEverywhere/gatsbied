@@ -1,39 +1,29 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import AFRAME from 'aframe'
-import { withPrefix } from 'gatsby';
-// { satTemptingHaight } from '../assets/videos/satTemptingHaight.mp4'
+import Assets from './Assets'
+import Entities from './Entities'
 
-// <img src={withPrefix('/videos/satTemptingHaight.mp4')} alt="Logo" />;
-
-class MainCreative extends React.Component {
+class MainCreative extends React.PureComponent {
   constructor(props){
     super();
+    this.state={loadedContent:null}
   }
   componentDidMount(){
-    this.loadedContent=(
-      <main>
-        <a-scene embedded style={{width:'100%',height:'100%'}}>
-        {this.assets()}
-          <a-box position="-1 0.5 3" rotation="0 45 0" color="#4CC3D9" />
-          <a-sphere position="0 1.25 5" radius="1.25" color="#EF2D5E" />
-          <a-cylinder position="1 0.75 3" radius="0.5" height="1.5" color="#FFC65D" />
-          <a-plane position="0 0 4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" />
-          <a-video src="#skyTexture" rotation="0 180 0" width="8" height="4" position="-1 0 4">
-          <a-animation attribute="rotation" repeat="indefinite" to="0 360 0" dur="3000" easing="linear"></a-animation>
-          </a-video>
-            <a-sky color="#954" />
-        </a-scene>
-      </main>
-    )
-  }
-  assets(){
-    return (<a-assets>
-  <video id="skyTexture" src={withPrefix('/videos/satTemptingHaight.mp4')} crossOrigin="anonymous" />
-</a-assets>)
+    import('aframe')
+      .then((aframe) => {
+          this.setState({
+          loadedContent:(
+            <main>
+              <a-scene cursor="rayOrigin: mouse" embedded style={{width:'100%',height:'100%'}}>
+                <Assets />
+                <Entities />
+              </a-scene>
+            </main>
+          )})
+      })
+      .catch((error) => console.error(error));
   }
   render() {
-    return this.loadedContent ? this.loadedContent : <div>Loading . . .</div>
+    return this.state.loadedContent; // ? this.loadedContent : <div>Loading . . .</div>
   }
 }
 

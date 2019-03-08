@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import ItemChooser from './ItemChooser'
 import { Link } from 'gatsby'
 

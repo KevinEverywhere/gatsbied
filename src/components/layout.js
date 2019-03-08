@@ -43,6 +43,8 @@ const Layout = ({ children, location }) => {
             meta={[
               { name: 'description', content: 'Kevin Ready is a developer, musician and adventurist.' },
               { name: 'keywords', content: 'freelance,react,node,javascript,contractor,developer' },
+              // { name: 'Access-Control-Request-Headers', content: 'Accept,Access-Control-Allow-Origin' },
+              // { name: 'Access-Control-Allow-Origin', content: '*' },
             ]}
           >
             <html lang="en" />
