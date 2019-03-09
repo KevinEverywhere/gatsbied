@@ -4,7 +4,6 @@ import Layout from '../components/layout'
 
 import SmallHeader from '../components/SmallHeader'
 import MainWork from '../components/MainWork'
-import ItemChooser from '../components/ItemChooser'
 import Footer from '../components/Footer'
 import { JobJSON } from '../assets/data/linkedIn'
 
