@@ -15,18 +15,10 @@ class Entities extends React.PureComponent {
         this.setState({
           entities:(
               <a-entity>
-                <a-box position="-3 0.5 3" rotation="0 45 0" color="#4CC3D9" />
                 <a-sphere position="-10 -1.25 5" radius="1.25" color="#2D5EEF" />
-                <a-cylinder position="2 0.75 1" radius="0.5" height="1.5" color="#FFC65D" />
                 <a-plane position="0 -1 4" rotation="-90 0 0" width="4" height="4" color="#C87BA4" />
-                <a-video src="#skyTexture" video-texture rotation="0 180 0" width="12" height="6.8" position="-1 0 4">
-                <a-animation attribute="rotation" repeat="indefinite" to="0 360 0" dur="3000" easing="linear"></a-animation>
-                </a-video>
-                <a-entity id="rig" rotation="0 180 0">
-                  <a-camera  id="camera">
-                    <a-cursor></a-cursor>
-                  </a-camera>
-                </a-entity>
+                <a-video src="#thankyou" video-texture rotation="0 120 0" width="9" height="5" position="-3 0 4" />
+                <a-video src="#skyTexture" video-texture rotation="0 240 0" width="12" height="6.8" position="5 0 4" />
                 <a-sky color="#954" />
               </a-entity>
           )})

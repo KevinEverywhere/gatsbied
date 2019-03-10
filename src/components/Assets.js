@@ -13,6 +13,7 @@ class Assets extends React.PureComponent {
           assets:(
             <a-assets>
               <video id="skyTexture" src={withPrefix('/videos/satTemptingHaight.mp4')} crossOrigin="anonymous" />
+              <video id="thankyou" src={withPrefix('/videos/three36.mp4')} crossOrigin="anonymous" />
             </a-assets>
           )})
       })
