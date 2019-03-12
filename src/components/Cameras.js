@@ -8,6 +8,7 @@ class Cameras extends React.PureComponent {
   clicked(e){
     console.log(e)
   }
+
   componentDidMount(){
     import('aframe')
       .then(() => {
@@ -15,8 +16,8 @@ class Cameras extends React.PureComponent {
           .then(() => {
             this.setState({
               cameras:(
-                <a-entity id="rig" position="0 1 0" rotation="0 180 0">
-                  <a-camera look-controls="pointerLockEnabled: true" position="0 1 0" id="main-camera">
+                <a-entity id="rig" position="0 -1 -3" rotation="0 180 0">
+                  <a-camera position="0 2 0" id="main-camera">
                     <a-cursor></a-cursor>
                     <a-animation  />
                   </a-camera>

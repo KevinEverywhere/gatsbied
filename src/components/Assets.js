@@ -12,8 +12,9 @@ class Assets extends React.PureComponent {
           this.setState({
           assets:(
             <a-assets>
-              <video id="skyTexture" src={withPrefix('/videos/satTemptingHaight.mp4')} crossOrigin="anonymous" />
-              <video id="thankyou" src={withPrefix('/videos/three36.mp4')} crossOrigin="anonymous" />
+              <video id="skyTexture" webkit-playsinline="" playsinline="" autoplay="" controls="" src={withPrefix('/videos/satTemptingHaight.mp4')} crossOrigin="anonymous" />
+              <video id="biking" webkit-playsinline="" playsinline="" autoplay="" controls="" src={withPrefix('/videos/biking.mp4')} crossOrigin="anonymous" />
+              <video id="thankyou" webkit-playsinline="" playsinline="" autoplay="" controls="" src={withPrefix('/videos/three36.mp4')} crossOrigin="anonymous" />
             </a-assets>
           )})
       })

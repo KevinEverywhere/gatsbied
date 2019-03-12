@@ -5,6 +5,9 @@
   "author": "Kevin Ready",
   "dependencies": {
     "aframe": "0.9.0",
+    "aframe-extras": "6.0.0",
+    "axios": "0.18.0",
+    "crypto": "1.0.1",
     "gatsby": "^2.0.76",
     "gatsby-plugin-manifest": "^2.0.9",
     "gatsby-plugin-offline": "^2.0.16",
