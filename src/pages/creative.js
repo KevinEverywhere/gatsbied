@@ -9,10 +9,6 @@ class CreativePage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isArticleVisible: false,
-      timeout: false,
-      articleTimeout: false,
-      article: '',
       loading: 'is-loading'
     }
     this.handleOpenArticle = this.handleOpenArticle.bind(this)
@@ -91,21 +87,19 @@ class CreativePage extends React.Component {
 
   render() {
     return (
-      <Layout location={this.props.location}>
-        <div className={`body ${this.state.loading} ${this.state.isArticleVisible ? 'is-article-visible' : ''}`}>
-          <div id="wrapper" className="page">
-            <SmallHeader active="creative" chosen="" onOpenArticle={this.handleOpenArticle} timeout={this.state.timeout} />
-            <MainCreative
-              timeout={this.state.timeout}
-              articleTimeout={this.state.articleTimeout}
-              article={this.state.article}
-              onCloseArticle={this.handleCloseArticle}
-              setWrapperRef={this.setWrapperRef}
-            />
-            <Footer timeout={this.state.timeout} />
-          </div>
-          <div id="bg"></div>
+      <Layout location={this.props.location} position={this.state.position}>
+        <div id="wrapper" className="page">
+        <SmallHeader active="creative" />
+          <MainCreative
+            timeout={this.state.timeout}
+            articleTimeout={this.state.articleTimeout}
+            article={this.state.article}
+            onCloseArticle={this.handleCloseArticle}
+            setWrapperRef={this.setWrapperRef}
+          />
+          <Footer  />
         </div>
+        <div id="bg"></div>
       </Layout>
     )
   }

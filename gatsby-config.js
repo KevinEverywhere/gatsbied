@@ -9,7 +9,7 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     {
       resolve: "gatsby-source-graphql",
-      options: [{
+      options: {
         // This type will contain remote schema Query type
         typeName: "SWAPI",
         // This is the field under which it's accessible
@@ -17,17 +17,6 @@ module.exports = {
         // URL to query from
         url: "https://api.graphcms.com/simple/v1/swapi",
       },
-      {
-        typeName: "myapi",
-        fieldName: "planetkevin",
-        url: "https://planetkevin.com/assets/countries.json",
-      },
-      {
-        typeName: "RMAPI",
-        fieldName: "rickAndMorty",
-        url: "https://rickandmortyapi-gql.now.sh/",
-      },
-    ]
     }, {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -40,6 +29,13 @@ module.exports = {
         icon: 'src/images/planetKevin.png',
         theme_color_in_head: true,
         include_favicon: true,
+      },
+    },{
+      resolve: "gatsby-source-graphql",
+      options: {
+        typeName: "RMAPI",
+        fieldName: "rickAndMorty",
+        url: "https://rickandmortyapi-gql.now.sh/",
       },
     },
     {

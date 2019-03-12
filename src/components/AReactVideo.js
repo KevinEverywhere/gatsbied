@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import SectionChooser from './SectionChooser'
 
 const AReactVideo = (props) => {
   if(props.spherical){
