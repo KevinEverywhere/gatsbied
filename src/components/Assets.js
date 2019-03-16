@@ -13,7 +13,7 @@ class Assets extends React.PureComponent {
           assets:(
             <a-assets>
               <video id="haight" webkit-playsinline="" playsInline="" autoPlay="" controls="" src={withPrefix('/videos/satTemptingHaight.mp4')} crossOrigin="anonymous" />
-              <video id="biking" webkit-playsinline="" playsInline={true} autoPlay={true} controls="" src={withPrefix('/videos/biking.mp4')} crossOrigin="anonymous" />
+              <video id="biking" webkit-playsinline="" playsInline="" autoPlay="" controls="" src={withPrefix('/videos/biking.mp4')} crossOrigin="anonymous" />
               <video id="thankyou" webkit-playsinline="" playsInline="" autoPlay="" controls="" src={withPrefix('/videos/three36.mp4')} crossOrigin="anonymous" />
             </a-assets>
           )})
