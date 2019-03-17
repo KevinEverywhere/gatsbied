@@ -3,8 +3,8 @@ import GyroController from '../state/gyroscope'
 
 const SecondPage = () => (
   <GyroController>
-    <h1>This is the second page</h1>
-    <p>Page 2</p>
+    <h1>II</h1>
+    <p>This is gyroscope test</p>
   </GyroController>
 )
 //
