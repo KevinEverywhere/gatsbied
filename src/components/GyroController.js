@@ -52,7 +52,12 @@ class GyroController extends React.Component {
   }
 
   testPosition=(e)=>{
-    alert(`testPosition=${this.upDownTest(this.onUpDownAxis(e))}`)
+    const old=document.querySelector('#rig').getAttribute('position');
+    document.querySelector('#rig').setEntityAttribute('position',
+      old,
+      {x:old.x,y:old.y,z:(old.z - this.upDownTest(this.onUpDownAxis(e)))});
+    // alert(`testPosition=${this.upDownTest(this.onUpDownAxis(e))}`)
+    // document.querySelector('#rig'). id="rig" position="0 1 -3" rotation="0 180 0" animation="property: position; to: 0 60 120; dur: 10000"
   //   console.log(`testPosition(${})`)
   //   document.querySelector('#zeroVal').innerHTML=`Compass:
   //   ${this.onCompassAxis(e)}, UD:

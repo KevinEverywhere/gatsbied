@@ -10,7 +10,7 @@ class Cameras extends React.PureComponent {
   }
   createdAnimations(fromAnimArray, sequential){
     let myAnimations;
-    if(sequential){
+    if(!sequential){
       myAnimations = fromAnimArray.map((anim, i) => {
         let str = ` animation__${i}=`
         for(var z in this){

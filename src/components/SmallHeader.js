@@ -18,7 +18,7 @@ const chooseMe = chosen => {
       str=chosen;
       break;
     case 'jobs':
-      str=chosenMe('recommendations');
+      str='';// chosenMe('recommendations');
       break;
     case 'recommendations':
       str=chosenMe('work');

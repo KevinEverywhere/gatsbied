@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
+
 import WorkItem from './WorkItem'
 import RecommendationItem from './RecommendationItem'
 
@@ -33,14 +35,32 @@ class MainWork extends React.Component {
         // if(this.props.isSelected === 'recommendations'){
         //   str=recommendations
         // }
+        //  {close}
+              // {str}
+
 
     }
     let close = <div className="close" onClick={() => {this.props.onCloseArticle()}}></div>
 
     return (
       <main>
-      {close}
-      {str}
+      <div style={{textShadow:`1px 1px black`,padding: '1rem'}}>
+        <h2>About Kevin</h2>
+        <p>Kevin Ready has kept up with the most current code, audio, video and VR technolgies since Bill Clinton was in office. This site was created using react and gatsby, with redux, aframe, three.js, and others. Kevin is looking for contract or permanent work using software and technologies for which he is passionate.</p>
+        <p>
+        More information can be found at the following links.
+        </p>
+        <p>
+        <nav>
+        <ul style={{listStyle:'none'}}>
+        <li><Link to='/contact'>Contact</Link></li>
+        <li><a href='https://linkedin.com/in/planetkevin/'>LinkedIn</a></li>
+        <li><a href='https://github.com/kevineverywhere/'>GitHub</a></li>
+        </ul>
+        </nav>
+        </p>
+
+      </div>
       </main>
     )
   }

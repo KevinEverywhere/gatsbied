@@ -16,11 +16,13 @@ class WorkItem extends React.Component {
       //   <li key={this.props.key}>{this.props.item.company}</li>
       // )
     return (
-      <details key={this.props.item.key}>
-      <summary>{this.props.item.company}</summary>
-      <h3>{this.props.item.title}</h3>
-      {this.createListsFromDots(this.props.item.description)}
-      </details>
+      <div class="box">
+        <details key={this.props.item.key}>
+        <summary>{this.props.item.company}</summary>
+        <h3>{this.props.item.title}</h3>
+        {this.createListsFromDots(this.props.item.description)}
+        </details>
+      </div>
     )
   }
 }
