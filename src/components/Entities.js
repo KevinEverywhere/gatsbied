@@ -16,7 +16,7 @@ class Entities extends React.PureComponent {
         this.setState({
           entities:(
               <a-entity>
-                <a-plane position="0 -100 4" rotation="-90 0 0" width="140" height="90" color="#333" />
+                <a-plane position="0 -100 4" rotation="-90 0 0" width="140" height="90" color="#311" />
                 <AReactVideo src="#biking" id="biking" rotation="0 300 0" radius={1000} position="0 2 -15" spherical="true" />
                 <AReactVideo src="#thankyou" id="thankyou" rotation="0 100 0" width={5} height={5} position="-5 2 4" />
                 <AReactVideo src="#haight" id="haight" rotation="0 260 0" width={12} height={6.8} position="6 3 4" />

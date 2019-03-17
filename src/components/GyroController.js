@@ -5,40 +5,20 @@ class GyroController extends React.Component {
   constructor(props){
     super(props);
     this.deviceOrientationHandler=this.deviceOrientationHandler.bind(this)
+    this.orientationChangeHandler=this.orientationChangeHandler.bind(this)
     this.state={
       orientation: 0,
       startingPoint:null,
     }
   }
 
-  reorient = e => {
-    this.setState({
-      startingPoint:null,
-      started: {
-        alpha: null,
-        beta: null,
-        gamma: new Date(),
-      },
-    })
+  componentWillUnmount(){
+    window.removeEventListener('deviceorientation', this.deviceOrientationHandler, false);
+    window.removeEventListener('orientationchange', this.orientationChangeHandler, false);
+  }
+  componentDidMount(){
     window.addEventListener('deviceorientation', this.deviceOrientationHandler, false);
-  }
-
-  deviceOrientationHandler = e => {
-    const { alpha, beta, gamma } = e;
-    if(this.state.startingPoint){
-      this.props.gyroControls(this.upDownTest(this.onUpDownAxis(e)))
-      // this.testPosition(e)
-    }else{
-      const startingPoint = { alpha, beta, gamma }
-      this.setState({ startingPoint })
-    }
-  }
-
-  orientationChangeHandler = e => {
-    console.log(window.orientation)
-    this.setState({
-      orientation: window.orientation
-    })
+    window.addEventListener('orientationchange', this.orientationChangeHandler, false);
   }
 
   onUpDownAxis = e => {
@@ -52,33 +32,49 @@ class GyroController extends React.Component {
     return Math.abs(rtnVal) > 2 ? rtnVal : 0;
   }
 
-  // testPosition=(e)=>{
+  deviceOrientationHandler(e){
+    console.log('deviceOrientationHandler');
+    const { alpha, beta, gamma } = e;
+    if(this.state.startingPoint){
+      // this.props.gyroControls(this.upDownTest(this.onUpDownAxis(e)))
+      this.testPosition(e)
+    }else{
+      const startingPoint = { alpha, beta, gamma }
+      this.setState({ startingPoint })
+    }
+  }
+
+  orientationChangeHandler(e){
+    console.log(window.orientation)
+    this.setState({
+      orientation: window.orientation
+    })
+  }
+
+  testPosition=(e)=>{
+    alert(`testPosition=${this.upDownTest(this.onUpDownAxis(e))}`)
   //   console.log(`testPosition(${})`)
   //   document.querySelector('#zeroVal').innerHTML=`Compass:
   //   ${this.onCompassAxis(e)}, UD:
   //   ${this.onUpDownAxis(e)}, Spin:
   //   ${this.onSideToSideAxis(e)}}
   //   `;
-  // }
-  componentWillUnmount(){
-    window.removeEventListener('deviceorientation', this.deviceOrientationHandler, true);
-    window.removeEventListener('orientationchange', this.orientationChangeHandler, true);
   }
-  componentDidMount(){
-    window.addEventListener('orientationchange', this.orientationChangeHandler, true);
-  }
+
   render() {
     return (
-      { this.props.children }
+      <div>
+        { this.props.children }
+      </div>
     )
   }
 }
 
 export default GyroController
 
-GyroController.propTypes = {
-  gyroControls: PropTypes.func.isRequired,
-}
+// GyroController.propTypes = {
+//   gyroControls: PropTypes.func.isRequired,
+// }
 
 // onCompassAxis = e => {
 //   return Math.round(e.alpha+this.state.orientation) % 360

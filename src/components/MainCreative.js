@@ -53,7 +53,4 @@ class MainCreative extends React.PureComponent {
   }
 }
 
-MainCreative.propTypes = {
-}
-
 export default MainCreative
