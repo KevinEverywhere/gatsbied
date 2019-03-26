@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-
 import WorkItem from './WorkItem'
 import RecommendationItem from './RecommendationItem'
 
@@ -22,45 +21,39 @@ class MainWork extends React.Component {
          <WorkItem key={i} item={item} />
        )
      });
+   }
+   oldrender() {
+     let str;
+     if(this.props[this.props.isSelected]){
+       str=this[`draw${this.props.isSelected}`]();
+     }else{
+       str='';
+     }
+     return str;
   }
   render() {
-    let str;
-    if(this.props[this.props.isSelected]){
-      str=this[`draw${this.props.isSelected}`]();
-       // if(this.props.isSelected === 'jobs'){
-       //  str=work
-      }else{
-        str=<li>Main work div</li>;
-
-        // if(this.props.isSelected === 'recommendations'){
-        //   str=recommendations
-        // }
-        //  {close}
-              // {str}
-
-
-    }
-    let close = <div className="close" onClick={() => {this.props.onCloseArticle()}}></div>
-
+    const minWidth = 240;
     return (
       <main>
-      <div style={{textShadow:`1px 1px black`,padding: '1rem'}}>
-        <h2>About Kevin</h2>
-        <p>Kevin Ready has kept up with the most current code, audio, video and VR technolgies since Bill Clinton was in office. This site was created using react and gatsby, with redux, aframe, three.js, and others. Kevin is looking for contract or permanent work using software and technologies for which he is passionate.</p>
-        <p>
-        More information can be found at the following links.
-        </p>
-        <p>
-        <nav>
-        <ul style={{listStyle:'none'}}>
-        <li><Link to='/contact'>Contact</Link></li>
-        <li><a href='https://linkedin.com/in/planetkevin/'>LinkedIn</a></li>
-        <li><a href='https://github.com/kevineverywhere/'>GitHub</a></li>
+        <div style={{
+          textShadow:`1px 1px black`,
+          padding: '1rem',
+          color:'white',
+          fontWeight: 'bold',
+          width: '60%',
+          minWidth: `${minWidth}px`
+        }}>
+          <h2>About Kevin</h2>
+          <p>Kevin Ready has kept up with the most current technolgies creating code, players, templates and content for startups, agencies, and digital media clients, since Bill Clinton was in office. This site was created in 2019 using react and gatsby, with redux, aframe, three.js, and others, optimized for mobile. Kevin is often looking for contract or permanent work using software and technologies for which he is passionate.</p>
+          <p style={{display: 'none'}}>
+          More information can be found at the following links.
+          </p>
+        </div>
+        <ul className='horizontalBar'>
+          <li><Link to='/contact'>Contact</Link></li>
+          <li><a href='https://linkedin.com/in/planetkevin/'>LinkedIn</a></li>
+          <li><a href='https://github.com/kevineverywhere/'>GitHub</a></li>
         </ul>
-        </nav>
-        </p>
-
-      </div>
       </main>
     )
   }

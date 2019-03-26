@@ -1,9 +1,12 @@
 import React from 'react'
+import { Link } from 'gatsby'
+
 import Layout from '../components/layout'
-import Header from '../components/Header'
+import SmallHeader from '../components/SmallHeader'
+import MainContact from '../components/MainContact'
 import Footer from '../components/Footer'
 
-class IndexPage extends React.Component {
+class ContactReplyPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -60,7 +63,6 @@ class IndexPage extends React.Component {
 
   handleCloseArticle() {
 
-
     this.setState({
       articleTimeout: !this.state.articleTimeout
     })
@@ -92,8 +94,18 @@ class IndexPage extends React.Component {
     return (
       <Layout location={this.props.location}>
         <div className={`body ${this.state.loading} ${this.state.isArticleVisible ? 'is-article-visible' : ''}`}>
-          <div id="wrapper">
-            <Header onOpenArticle={this.handleOpenArticle} timeout={this.state.timeout} />
+          <div id="wrapper" className="page">
+            <SmallHeader onOpenArticle={this.handleOpenArticle} timeout={this.state.timeout} />
+            <div className="deadCenter">
+              <p>
+                Please forgive a disobedient technology. Its day of reckoning is at hand.
+              </p>
+              <Link to="/">
+                <div className="lglogo">
+                  <span className="icon fa-bicycle"></span>
+                </div> Home
+              </Link>
+            </div>
             <Footer timeout={this.state.timeout} />
           </div>
           <div id="bg"></div>
@@ -103,4 +115,4 @@ class IndexPage extends React.Component {
   }
 }
 
-export default IndexPage
+export default ContactReplyPage

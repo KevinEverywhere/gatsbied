@@ -127,7 +127,7 @@
 			width: 90vw;
 			max-width: 90vw;
 			min-width: 100%;
-			background-color: rgba(234,233,0,0.2);
+			background-color: rgba(34,33,20,0.5);
 			noprop: transparentize(_palette(bg), 0.15);
 			border-radius: _size(border-radius);
 			height:80vh;
@@ -144,5 +144,31 @@
 
 			&.active {
 				display: block !important;
+			}
+		}
+
+		.deadCenter{
+			text-align:center;
+			width: 50vh;
+			margin: 25vh 0;
+			font-weight: bold;
+			text-shadow: 1px 1px #222;
+		}
+
+		.lglogo{
+			width: 10vh;
+			height: 10vh;
+			line-height: 10vh;
+			border: solid _size(border-width) _palette(border);
+			border-radius: 100%;
+			background-color:rgba(33, 33, 33, 0.3);
+			margin: 0.25rem;
+			@include vendor('display', 'inline-block');
+
+			.icon {
+				transform: scale(3);
+				&:before {
+					font-size: 3vh;
+				}
 			}
 		}

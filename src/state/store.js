@@ -349,7 +349,21 @@ const initialState = {
       "Created": "9/2/10, 5:23 AM",
       "Status": "VISIBLE"
     }
-  ]
+  ],
+  emailURL: 'https://planetkevin.com/scripts/jsonEmail.php',
+  emailConfig: {
+    "Content-Type": "application/x-www-form-urlencoded",
+    "X-Requested-With": "XMLHttpRequest",
+    "Access-Control-Request-Origin": "*",
+    "Access-Control-Request-Method": "OPTIONS",
+    "Access-Control-Request-Headers": "Origin, X-Requested-With, Content-Type"
+  },
+  msg:{
+    uname: '',
+    email: '',
+    message: '',
+    msgTime: Date.now()
+  }
 };
 
 const store = () => createStore(reducers, initialState)

@@ -5,10 +5,19 @@ import AReactVideo from './AReactVideo'
 class Entities extends React.PureComponent {
   constructor(props){
     super();
-    this.state={entities:null}
+    this.state={
+      imagesPerSide: 40,
+      numberOfSides: 4,
+      entities:null
+    }
   }
   clicked(e){
     console.log(e)
+  }
+  createWalls = () => {
+    const wallList = [];
+
+    // document.createElement('a-plane')
   }
   componentDidMount(){
     import('aframe')

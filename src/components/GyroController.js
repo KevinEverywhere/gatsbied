@@ -28,7 +28,7 @@ class GyroController extends React.Component {
   }
 
   upDownTest = val => {
-    const rtnVal = Math.floor(val/10);
+    const rtnVal = Math.floor(val/30);
     return Math.abs(rtnVal) > 2 ? rtnVal : 0;
   }
 

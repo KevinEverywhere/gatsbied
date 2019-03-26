@@ -95,7 +95,7 @@ class ContactPage extends React.Component {
         <div className={`body ${this.state.loading} ${this.state.isArticleVisible ? 'is-article-visible' : ''}`}>
           <div id="wrapper" className="page">
             <SmallHeader onOpenArticle={this.handleOpenArticle} timeout={this.state.timeout} />
-            <MainContact
+            <MainContact nextPage="ContactReply"
               timeout={this.state.timeout}
               articleTimeout={this.state.articleTimeout}
               article={this.state.article}

@@ -1,11 +1,11 @@
 import React from 'react'
-// import WorkLayout from '../components/WorkLayout'
 import Layout from '../components/layout'
-
 import SmallHeader from '../components/SmallHeader'
 import MainWork from '../components/MainWork'
 import Footer from '../components/Footer'
-import { JobJSON } from '../assets/data/linkedIn'
+
+import store from '../state/store';
+// console.log(store().getState())
 
 class WorkPage extends React.Component {
   constructor(props) {
@@ -25,8 +25,8 @@ class WorkPage extends React.Component {
     this.timeoutId = setTimeout(() => {
         this.setState({
           loading: '',
-          jobs: JobJSON.jobs,
-          recommendations: JobJSON.recommendations,
+          jobs: store().getState().getJobs,
+          recommendations: store().getState().getRecommendations,
         });
     }, 100);
   }
@@ -48,8 +48,6 @@ class WorkPage extends React.Component {
   }
 
   render() {
-    console.log(this.state.recommendations);
-    console.log(this.state.jobs);
     return (
       <Layout location={this.props.location} position={this.state.position}>
         <div id="wrapper" className="page">

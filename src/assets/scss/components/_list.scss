@@ -25,6 +25,40 @@
 			padding-left: 0.5em;
 		}
 
+		&.horizontalBar{
+				list-style: none;
+				margin: auto;
+				width: 100vw;
+				padding-right: 15vw;
+				li {
+					display: inline-block;
+					padding: 0 4px 0 0;
+
+					&:last-child {
+						padding-right: 0;
+					}
+
+					a {
+						border-radius: 6px;
+						box-shadow: inset 0 0 0 _size(border-width) _palette(fg-light);
+						display: inline-block;
+						height: 2.25rem;
+						line-height: 2.25rem;
+						text-align: center;
+						width: 25vw;
+
+						&:hover {
+							background-color: _palette(border-bg);
+						}
+
+						&:active {
+							background-color: _palette(border-bg-alt);
+						}
+					}
+				}
+
+		}
+
 		&.alt {
 			list-style: none;
 			padding-left: 0;

@@ -11,6 +11,7 @@ export default function HTML(props) {
           name="viewport"
           content="initial-scale=1, width=device-width, height=device-height, viewport-fit=cover"
         />
+        <meta name="referrer" content="origin" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         {props.headComponents}
