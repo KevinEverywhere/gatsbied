@@ -13,7 +13,7 @@ export default function HTML(props) {
         />
         <meta name="referrer" content="origin" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>

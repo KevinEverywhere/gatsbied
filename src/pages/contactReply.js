@@ -3,7 +3,6 @@ import { Link } from 'gatsby'
 
 import Layout from '../components/layout'
 import SmallHeader from '../components/SmallHeader'
-import MainContact from '../components/MainContact'
 import Footer from '../components/Footer'
 
 class ContactReplyPage extends React.Component {

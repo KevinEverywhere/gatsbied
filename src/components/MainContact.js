@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { sendEmailActionCreator } from '../state/actions'
+import { prepareSendEmailActionCreator } from '../state/actions'
 
 class MainContact extends React.Component {
     constructor(props) {
@@ -17,7 +17,7 @@ class MainContact extends React.Component {
       this.setState({ fields });
     }
     sendFields = () => {
-      sendEmailActionCreator(this.state.fields)
+      prepareSendEmailActionCreator(this.state.fields)
     }
 
     handleSubmit = event => {
@@ -52,7 +52,7 @@ class MainContact extends React.Component {
 
       if (!fields["email"]) {
         formIsValid = false;
-        errors["email"] = "*Please enter your email-ID.";
+        errors["email"] = "Please enter your email.";
       }
 
       if (typeof fields["email"] !== "undefined") {
@@ -60,7 +60,7 @@ class MainContact extends React.Component {
         var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
         if (!pattern.test(fields["email"])) {
           formIsValid = false;
-          errors["email"] = "*Please enter valid email-ID.";
+          errors["email"] = "Please enter a valid email.";
         }
       }
       this.setState({

@@ -1,6 +1,8 @@
 import React from 'react'
+import AReactImage from './AReactImage'
 import AReactVideo from './AReactVideo'
 // import '../aframe/VideoTexture'
+import store from '../state/store';
 
 class Entities extends React.PureComponent {
   constructor(props){
@@ -19,17 +21,31 @@ class Entities extends React.PureComponent {
 
     // document.createElement('a-plane')
   }
+
+  builtImageAssets = () => {
+    const imageAssets = store().getState().getImages.map((item, d, arr) => {
+      const itemZ = `#${item}`;
+      const rot =  d % 2 === 0 ? "0 100 0" : "0 260 0";
+      const hPos = Math.floor(arr.length/4) - Math.floor(d/2);
+      const distanceBetween = 60;
+      const pos =  d % 2 === 0 ?
+        `${distanceBetween} 2 ${distanceBetween * hPos}` :
+        `${-distanceBetween} 2 ${distanceBetween * hPos}`;
+      return <AReactImage key={item} src={itemZ} rotation={rot} width={distanceBetween} height={distanceBetween} position={pos} />
+    })
+    return imageAssets;
+  }
   componentDidMount(){
     import('aframe')
       .then((aframe) => {
         this.setState({
           entities:(
               <a-entity>
-                <a-plane position="0 -100 4" rotation="-90 0 0" width="1400" height="900" color="#311" />
-                <AReactVideo src="#biking" id="biking" rotation="0 300 0" radius={1000} position="0 2 -15" spherical="true" />
-                <AReactVideo src="#thankyou" id="thankyou" rotation="0 100 0" width={5} height={5} position="-5 2 4" />
-                <AReactVideo src="#haight" id="haight" rotation="0 260 0" width={12} height={6.8} position="6 3 4" />
-                <a-sky color="#000" />
+                <a-plane plane-texture position="0 -100 4" rotation="-90 0 0" width="1400" height="900" color="#154" />
+                { this.builtImageAssets() }
+                <AReactVideo src="#thankyouVideo" id="thankyou" rotation="0 100 0" width={750} height={750} position="-600 2 4" />
+                <AReactVideo src="#haightVideo" id="haight" rotation="0 260 0" width={1200} height={680} position="600 3 4" />
+                <a-sky color="#fff" src="#universe_4096Image" />
               </a-entity>
           )})
       })

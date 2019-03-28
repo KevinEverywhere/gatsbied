@@ -358,6 +358,9 @@ const initialState = {
     "Access-Control-Request-Method": "OPTIONS",
     "Access-Control-Request-Headers": "Origin, X-Requested-With, Content-Type"
   },
+  getImages:[
+    "another_4_u.jpg", "bayStreet.jpg", "bgCroatia.jpg", "bikeReadier.jpg", "bridgeFade.jpg", "AuntDotWithHeart.jpg", "antCrawlingUpBamboo.jpg", "beardedGuy.jpg", "bigA.jpg", "bikeReady.jpg", "brollyMan.jpg", "BrandonKevin.jpg", "antonioClimbing.jpg", "beautifulFlower.jpg", "bigBalatonSunrise.jpg", "bikeless.jpg", "budapestSunset.jpg", "actionBee.jpg", "archer.jpg", "beddedBike.jpg", "bigData.jpg", "bikersForBikers.jpg", "butterflew.jpg", "adriaticSunrise.jpg", "auntDotSamGusTwo.jpg", "beeFlower.jpg", "bigFig.jpg", "birdInFlight.jpg", "bwKevin.jpg", "aftermath.jpg", "averyCastle.jpg", "beeFood.jpg", "bigFlowerUmbrella.jpg", "birdLady.jpg", "byeByeBike.jpg", "airSun.jpg", "babyBulb.jpg", "beheaded.jpg", "bigLeafSmallFlowers.jpg", "birdPlant.jpg", "centered.jpg", "akhenatenNefertiti.jpg", "backgroundBoys.jpg", "benAliceCake.jpg", "bigYellow.jpg", "birthdayLoriann.jpg", "cheersTwo.jpg", "akhenatenNefertitiFamily.jpg", "balaton.jpg", "benAliceMooned.jpg", "bikeAndSutroSquare.jpg", "birthdaySteve.jpg", "stars_milky_way.jpg", "angelAbovePope.jpg", "balatonSunset.jpg", "benoitBigHair.jpg", "bikeBeach.jpg", "blackWhtieFace.jpg", "universe_4096.jpg", "angelKev.jpg", "balatonSunsetting.jpg", "berries.jpg", "bikeBeached.jpg", "blurryTwo.jpg", "anotherGod.jpg", "bandida.jpg", "betweenTwo.jpg", "bikeChoices.jpg", "brentHomer.jpg"
+  ],
   msg:{
     uname: '',
     email: '',

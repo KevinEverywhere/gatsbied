@@ -29,7 +29,7 @@ class Cameras extends React.PureComponent {
             this.setState({
               cameras:(
                 <a-entity id="rig" position="0 1 -3" rotation="0 180 0">
-                  <a-camera position="0 2 0" id="main-camera">
+                  <a-camera far="20000" position="0 2 0" id="main-camera">
                     <a-cursor></a-cursor>
                   </a-camera>
                 </a-entity>
@@ -37,6 +37,7 @@ class Cameras extends React.PureComponent {
           })
       })
       .catch((error) => console.error(error));
+      console.log('cameramounted')
     }
   render() {
     return this.state.cameras;

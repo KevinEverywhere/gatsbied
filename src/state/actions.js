@@ -8,6 +8,8 @@ export const GET_RECOMMENDATIONS = 'getRecommendations';
 export const MSG = 'msg';
 export const EMAIL_URL = 'emailURL';
 export const EMAIL_CONFIG = 'emailConfig';
+export const GET_IMAGE = 'getImage';
+export const GET_IMAGES = 'getImages';
 
 const getJobAction = job => {
   return ({
@@ -34,59 +36,70 @@ const sendEmailAction = email => {
     payload: email
   })
 };
+const getImages = images => {
+  return ({
+     type: GET_IMAGES,
+     payload: images
+  });
+};
+const getImage = image => {
+  return ({
+     type: GET_IMAGE,
+     payload: image
+  });
+};
 
 export const getJobActionCreator = job => store().dispatch(getJobAction(job));
 export const getJobsActionCreator = jobs => store().dispatch(getJobsAction(jobs));
 export const getRecsActionCreator = recommendations => store().dispatch(getRecsAction(recommendations));
-export const sendEmailActionCreator = ( email ) => {
+export const prepareSendEmailActionCreator = ( email ) => {
   const sendTo = store().getState().emailURL;
-  const fields = email;
-  console.log(email);
   const config = store().getState().emailConfig;
+  const fields = email;
   fetch(sendTo, {
     headers: config,
-    method: "OPTIONS", // *GET, POST, PUT, DELETE, etc.
-    mode: "cors", // no-cors, cors, *same-origin
-    // body: fields, //  type must match "Content-Type" header
+    method: "OPTIONS",
+    mode: "cors"
   })
   .then(response => {
-    console.log(response);
     if (!response.ok) {
      throw Error(response.statusText);
     }
+    return sendEmailActionCreator(email, sendTo);
+  })
+  .catch(error => {
+    navigate('/contactOops');
+    console.log(error);
+    return email;
+  });
+}
+export const sendEmailActionCreator = ( email, sendTo ) => {
     fetch(sendTo, {
       headers: {
         "Access-Control-Request-Method": "POST",
       },
-      // mode: "cors", // no-cors, cors, *same-origin
       method: "POST",
-      // *GET, POST, PUT, DELETE, etc.
-      // mode: "cors", // no-cors, cors, *same-origin
-      body: 'json=' + encodeURIComponent(JSON.stringify(fields)),
-      //       body: {json:`{${encodeURIComponent(JSON.stringify(fields))}}`},
-      //  type must match "Content-Type" header
-      // body: fields, //  type must match "Content-Type" header
+      body: encodeURIComponent('json=' + JSON.stringify(email)),
     })
     .then(ret => {
-      console.log(ret);
       navigate('/contactReply');
-      return ret; // JSON.stringify(ret);
+      store().dispatch(sendEmailAction(email));
+      return ret;
     })
-    // JSON-string from `response.json()` call       navigate('/contactReply');
-    // console.log(JSON.stringify(data))
+    .then(ret => {
+      console.log(store().getState())
+    })
     .catch(error => {
-      navigate('/contactOops')
-      console.log(error)
+      navigate('/contactOops');
+      console.log(error);
       return email;
     });
-  })
-  .catch(error => {
-    navigate('/contactOops')
-    console.log(error)
-    return email;
-  });
-  store().dispatch(sendEmailAction(email));
-};
+  };
+
+
+export default function nothingHere() {
+  return {"nothing": "here"};
+}
 
 
 // export const getJobAction = job => dispatch({ type: GET_JOB, job });
@@ -96,9 +109,6 @@ export const sendEmailActionCreator = ( email ) => {
 
 
 
-export default function nothingHere() {
-  return {"nothing": "here"};
-}
 
 // export const sendEmail = mailBlob => dispatch({type: SEND_EMAIL, mailBlob});
 

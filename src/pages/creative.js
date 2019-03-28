@@ -4,6 +4,7 @@ import GyroController from '../components/GyroController'
 import SmallHeader from '../components/SmallHeader'
 import MainCreative from '../components/MainCreative'
 import Footer from '../components/Footer'
+import store from '../state/store';
 
 class CreativePage extends React.Component {
   constructor(props) {
@@ -16,7 +17,10 @@ class CreativePage extends React.Component {
 
   componentDidMount () {
     this.timeoutId = setTimeout(() => {
-        this.setState({loading: ''});
+      this.setState({
+        loading: '',
+        images: store().getState().getImages,
+      });
     }, 100);
     // document.addEventListener('mousedown', this.handleClickOutside);
   }
@@ -38,7 +42,7 @@ class CreativePage extends React.Component {
         <div id="wrapper" className="page">
         <SmallHeader active="creative" />
           <GyroController>
-            <MainCreative
+            <MainCreative images={this.state.images}
               setWrapperRef={this.setWrapperRef}
             />
           </GyroController>

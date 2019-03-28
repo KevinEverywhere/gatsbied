@@ -7,14 +7,16 @@ import {
   SEND_EMAIL,
   MSG,
   EMAIL_URL,
-  EMAIL_CONFIG
+  EMAIL_CONFIG,
+  GET_IMAGE,
+  GET_IMAGES
 } from './actions';
 
 export function getJobs(state = {}, action) {
   switch (action.type) {
     case GET_JOBS:
       return Object.assign({}, state,
-        store.getState().getJobs,
+        store().getState().getJobs,
       );
     default:
       return state;
@@ -36,19 +38,22 @@ export function getJob(state = {}, action) {
   switch (action.type) {
     case GET_JOB:
       return Object.assign({}, state,
-        store.getState().getJobs,
+        store.getState().getJob,
       );
     default:
       return state;
   }
 }
 
-export function sendEmail(state = {}, action) {
+export const sendEmail = (state={}, action) => {
   switch (action.type) {
     case SEND_EMAIL:
-      return Object.assign({}, state,
-        action,
-      );
+    console.log(action.payload);
+    console.log(store().getState());
+      return {
+        ...state,
+        msg:action.payload
+      };
     default:
       return state;
   }
@@ -76,6 +81,28 @@ export function emailConfig(state = {}, action) {
   }
 }
 
+export function getImages(state = {}, action) {
+  switch (action.type) {
+    case GET_IMAGES:
+      return Object.assign({}, state,
+        store().getState().getImages,
+      );
+    default:
+      return state;
+  }
+}
+
+export function getImage(state = {}, action) {
+  switch (action.type) {
+    case GET_IMAGE:
+      return Object.assign({}, state,
+        store().getState().getImage,
+      );
+    default:
+      return state;
+  }
+}
+
 export function msg(state = {}, action) {
   switch (action.type) {
     case MSG:
@@ -94,5 +121,7 @@ export default combineReducers({
   sendEmail,
   msg,
   emailURL,
-  emailConfig
+  emailConfig,
+  getImage,
+  getImages
 });
