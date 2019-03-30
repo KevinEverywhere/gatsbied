@@ -29,7 +29,7 @@ class GyroController extends React.Component {
     return val > 90 ? val - 180 : val
   }
 
-  upDownTest = val => Math.abs(val) > 20 ? val/120 : 0;
+  upDownTest = val => Math.abs(val) > 20 ? val/10 : 0;
 
   deviceOrientationHandler(e){
     // console.log('deviceOrientationHandler');
@@ -61,14 +61,6 @@ class GyroController extends React.Component {
     }catch(oops){
 
     }
-    // alert(`testPosition=${this.upDownTest(this.onUpDownAxis(e))}`)
-    // document.querySelector('#rig'). id="rig" position="0 1 -3" rotation="0 180 0" animation="property: position; to: 0 60 120; dur: 10000"
-  //   console.log(`testPosition(${})`)
-  //   document.querySelector('#zeroVal').innerHTML=`Compass:
-  //   ${this.onCompassAxis(e)}, UD:
-  //   ${this.onUpDownAxis(e)}, Spin:
-  //   ${this.onSideToSideAxis(e)}}
-  //   `;
   }
 
   render() {
@@ -114,3 +106,11 @@ export default GyroController
 //     return assumption;
 //   }, timer + 100);
 // }
+// alert(`testPosition=${this.upDownTest(this.onUpDownAxis(e))}`)
+// document.querySelector('#rig'). id="rig" position="0 1 -3" rotation="0 180 0" animation="property: position; to: 0 60 120; dur: 10000"
+//   console.log(`testPosition(${})`)
+//   document.querySelector('#zeroVal').innerHTML=`Compass:
+//   ${this.onCompassAxis(e)}, UD:
+//   ${this.onUpDownAxis(e)}, Spin:
+//   ${this.onSideToSideAxis(e)}}
+//   `;

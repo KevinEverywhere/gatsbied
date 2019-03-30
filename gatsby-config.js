@@ -41,12 +41,14 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/assets/data/`,
-        name: 'linkedIn',
+        path: `${__dirname}/static/images/`,
+        name: 'images',
       },
     },
     `gatsby-transformer-json`,
     `gatsby-transformer-remark`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-offline`
   ],
