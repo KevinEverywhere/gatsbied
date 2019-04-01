@@ -1,38 +1,25 @@
 import React from 'react'
-import { withPrefix, graphql } from 'gatsby';
-// import { GatsbyImage } from 'gatsby-image';
+import { withPrefix } from 'gatsby';
 import DynamicGatsbyImage from './DynamicGatsbyImage';
-import store from '../state/store';
 
 class Assets extends React.PureComponent {
   constructor(props){
     super();
     this.state={assets:null}
-    /**
-     * <video id="bikingVideo" webkit-playsinline="" playsInline="" autoPlay="" controls="" src=withPrefix('/videos/biking.mp4') crossOrigin="anonymous" />
-     * type {[type]} this.props
-     */
   }
   buildImageAssets = () => {
     const imageAssets = this.props.data.allFile.edges.map((node, index) => {
-      console.log(node);
-      console.log(node.node);
-      console.log(node.node.childImageSharp);
-      try{
-        if(node && node.node && node.node.childImageSharp){
-          return (
-            <DynamicGatsbyImage
-              id={node.node.id}
-              key={index}
-              fluid={node.node.childImageSharp.fluid}
-            />
-            )
-        }else{
-          return null;
-        }
-      }catch(oops){
-        return null;
+      if(node && node.node && node.node.childImageSharp){
+        return (
+          <DynamicGatsbyImage
+            alt={node.node.childImageSharp.fluid.originalName}
+            id={node.node.id}
+            key={index}
+            fluid={node.node.childImageSharp.fluid}
+          />
+          )
       }
+      return null;
     })
     return imageAssets;
   }

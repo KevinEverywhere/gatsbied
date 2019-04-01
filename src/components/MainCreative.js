@@ -45,7 +45,6 @@ class MainCreative extends React.PureComponent {
                       }
                   }
                 } else {
-                  // _element = document.documentElement;
                     if (_element.requestFullscreen) {
                         _element.requestFullscreen();
                     } else {
@@ -58,21 +57,6 @@ class MainCreative extends React.PureComponent {
                         }
                     }
                 }
-                // if (!document.fullscreenElement) {
-                //   this.el.sceneEl.requestFullscreen();
-                //   // .then({}).catch(err => {
-                //   //   alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
-                //   // });
-                // } else {
-                //   document.exitFullscreen();
-                // }
-                // if(this.el.sceneEl.getAttribute('embedded')){
-                //   this.el.sceneEl.removeAttribute('embedded');
-                // }else{
-                //   this.el.sceneEl.setEntityAttribute('embedded',true);
-                //   // this.el.sceneEl.setAttribute('embedded');
-                // }
-                console.log(this.el.sceneEl.getAttribute('embedded'));
               })
             }
           })
@@ -88,12 +72,6 @@ class MainCreative extends React.PureComponent {
               </a-scene>
             </main>
           )})
-          // aframe.ANIME.timeline({
-          //   targets:document.querySelector('#rig'),
-          //   position: [650,0,600],
-          //   easing: 'easeInOutSine',
-          //   endDelay: 1000
-          // })
       })
       .catch((error) => console.error(error));
   }

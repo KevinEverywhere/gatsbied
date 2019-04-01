@@ -1,3 +1,4 @@
+/* eslint no-unused-vars: "off" */
 import store from './store';
 import { navigate } from 'gatsby'
 
@@ -48,6 +49,18 @@ const getImage = image => {
      payload: image
   });
 };
+const getImageAction = image => {
+  return ({
+    type: GET_IMAGE,
+    payload: image
+  })
+};
+const getImagesAction = images => {
+  return ({
+    type: GET_IMAGES,
+    payload: images
+  })
+};
 
 export const getJobActionCreator = job => store().dispatch(getJobAction(job));
 export const getJobsActionCreator = jobs => store().dispatch(getJobsAction(jobs));
@@ -74,27 +87,30 @@ export const prepareSendEmailActionCreator = ( email ) => {
   });
 }
 export const sendEmailActionCreator = ( email, sendTo ) => {
-    fetch(sendTo, {
-      headers: {
-        "Access-Control-Request-Method": "POST",
-      },
-      method: "POST",
-      body: encodeURIComponent('json=' + JSON.stringify(email)),
-    })
-    .then(ret => {
-      navigate('/contactReply');
-      store().dispatch(sendEmailAction(email));
-      return ret;
-    })
-    .then(ret => {
-      console.log(store().getState())
-    })
-    .catch(error => {
-      navigate('/contactOops');
-      console.log(error);
-      return email;
-    });
-  };
+  fetch(sendTo, {
+    headers: {
+      "Access-Control-Request-Method": "POST",
+    },
+    method: "POST",
+    body: encodeURIComponent('json=' + JSON.stringify(email)),
+  })
+  .then(ret => {
+    navigate('/contactReply');
+    store().dispatch(sendEmailAction(email));
+    return ret;
+  })
+  .then(ret => {
+    console.log(store().getState())
+  })
+  .catch(error => {
+    navigate('/contactOops');
+    console.log(error);
+    return email;
+  });
+};
+
+export const getImageActionCreator = image => store().dispatch(getImageAction(image));
+export const getImagesActionCreator = images => store().dispatch(getImageAction(images));
 
 
 export default function nothingHere() {

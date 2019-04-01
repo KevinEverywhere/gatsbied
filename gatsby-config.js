@@ -26,17 +26,22 @@ module.exports = {
         background_color: '#000000',
         theme_color: '#000000',
         display: 'standalone',
-        icon: 'src/images/planetKevin.png',
+        icon: 'src/assets/images/planetKevin.png',
         theme_color_in_head: true,
         include_favicon: true,
         crossOrigin: `use-credentials`,
       },
     },{
-      resolve: "gatsby-source-graphql",
+      resolve: "gatsby-source-filesystem",
       options: {
-        typeName: "RMAPI",
-        fieldName: "rickAndMorty",
-        url: "https://rickandmortyapi-gql.now.sh/",
+        path: `${__dirname}/src/assets/images/`,
+        name: 'assetimages',
+      },
+    },{
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: `${__dirname}/static/images/`,
+        name: 'images',
       },
     },
     {
@@ -44,13 +49,6 @@ module.exports = {
       options: {
         path: `${__dirname}/src/assets/data/`,
         name: 'data',
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/assets/img/`,
-        name: 'img',
       },
     },
     `gatsby-transformer-sharp`,

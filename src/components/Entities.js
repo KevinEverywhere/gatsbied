@@ -25,6 +25,8 @@ class Entities extends React.PureComponent {
           `${distanceBetween} 2 ${distanceBetween * hPos}` :
           `${-distanceBetween} 2 ${distanceBetween * hPos}`;
         return <AReactImage key={node.node.id} src={itemZ} rotation={rot} width={distanceBetween} height={distanceBetween} position={pos} />
+      }else{
+        return null;
       }
     })
     return imageAssets;

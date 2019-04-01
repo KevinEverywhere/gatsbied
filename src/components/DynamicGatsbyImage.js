@@ -16,9 +16,9 @@ export default ({ node, ...props }) => {
 
   // eslint-disable-next-line jsx-a11y/alt-text
   if (node && node.publicURL) {
-    return <img crossOrigin="anonymous" src={node.publicURL} {...props} />;
+    return <img alt="Gallery item" crossOrigin="anonymous" src={node.publicURL} {...props} />;
   }
 
   // eslint-disable-next-line jsx-a11y/alt-text
-  return <img crossOrigin="anonymous" {...props} />;
+  return <img alt="Gallery item" crossOrigin="anonymous" {...props} />;
 };

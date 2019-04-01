@@ -37,7 +37,6 @@ class Cameras extends React.PureComponent {
           })
       })
       .catch((error) => console.error(error));
-      console.log('cameramounted')
     }
   render() {
     return this.state.cameras;

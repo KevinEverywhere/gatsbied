@@ -23,7 +23,7 @@ const Header = (props) => (
              when not pushing cloud content.
               </p>
               <p>
-                ©2019 Kevin Ready
+                ©2019 • Kevin Ready
               </p>
           </div>
         </div>

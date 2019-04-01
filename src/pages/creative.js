@@ -1,4 +1,5 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import GyroController from '../components/GyroController'
 import SmallHeader from '../components/SmallHeader'
@@ -22,7 +23,6 @@ class CreativePage extends React.Component {
         images: store().getState().getImages,
       });
     }, 100);
-    // document.addEventListener('mousedown', this.handleClickOutside);
   }
 
   componentWillUnmount () {
