@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const AReactVideo = (props) => {
-  const radius = `primitive: sphere; radius:${props.radius}`
+  const radiusStr = `primitive: sphere; radius:${props.radius}`
   if(props.spherical){
     return(
-    <a-entity geometry={radius} position={props.position} rotation={props.rotation}>
-    <a-video material="side:double" geometry={radius} src={props.src} controls video-texture position="0 0 0" />
+    <a-entity geometry={radiusStr} position={props.position} rotation={props.rotation}>
+    <a-video material="side:double" geometry={radiusStr} src={props.src} controls video-texture position="0 0 0" />
     </a-entity>
   )
   }else{

@@ -42,7 +42,7 @@ class CreativePage extends React.Component {
         <div id="wrapper" className="page">
         <SmallHeader active="creative" />
           <GyroController>
-            <MainCreative images={this.state.images}
+            <MainCreative images={this.state.images} data={this.props.data}
               setWrapperRef={this.setWrapperRef}
             />
           </GyroController>
@@ -55,3 +55,27 @@ class CreativePage extends React.Component {
 }
 
 export default CreativePage
+
+export const fluidImage = graphql`
+fragment fluidImage on File {
+  childImageSharp {
+    fluid(maxWidth: 960) {
+      ...GatsbyImageSharpFluid
+    }
+  }
+}
+`;
+
+
+export const pageQuery = graphql`
+query pageQuery{
+  allFile{
+    edges{
+      node{
+        id
+        ...fluidImage
+      }
+    }
+  }
+}
+`;

@@ -15,26 +15,28 @@ class Entities extends React.PureComponent {
   }
 
   builtImageAssets = () => {
-    const imageAssets = store().getState().getImages.map((item, d, arr) => {
-      const itemZ = `#${item}`;
-      const rot =  d % 2 === 0 ? "0 270 0" : "0 90 0";
-      const hPos = Math.floor(arr.length/4) - Math.floor(d/2);
-      const distanceBetween = this.state.distanceBetween;
-      const pos =  d % 2 === 0 ?
-        `${distanceBetween} 2 ${distanceBetween * hPos}` :
-        `${-distanceBetween} 2 ${distanceBetween * hPos}`;
-      return <AReactImage key={item} src={itemZ} rotation={rot} width={distanceBetween} height={distanceBetween} position={pos} />
+    const imageAssets =this.props.data.allFile.edges.map((node, index, arr) => {
+      if(node && node.node && node.node.childImageSharp && node.node.childImageSharp.fluid){
+        const itemZ = node.node.childImageSharp.fluid.src;
+        const rot =  index % 2 === 0 ? "0 270 0" : "0 90 0";
+        const hPos = Math.floor(arr.length/4) - Math.floor(index/2);
+        const distanceBetween = this.state.distanceBetween;
+        const pos =  index % 2 === 0 ?
+          `${distanceBetween} 2 ${distanceBetween * hPos}` :
+          `${-distanceBetween} 2 ${distanceBetween * hPos}`;
+        return <AReactImage key={node.node.id} src={itemZ} rotation={rot} width={distanceBetween} height={distanceBetween} position={pos} />
+      }
     })
     return imageAssets;
   }
 
   builtVideoAssets = () => {
-    const fullLength = store().getState().getImages.length/3; //
-    const video1Pos = `0 0 ${-fullLength * this.state.distanceBetween}`;
-    const video2Pos = `0 320 ${fullLength * this.state.distanceBetween}`;
+    const fullLength = store().getState().getImages.length/3;
+    const video1Pos = `0 120 ${-fullLength * this.state.distanceBetween}`;
+    const video2Pos = `0 120 ${fullLength * this.state.distanceBetween}`;
     return (
       <>
-      <AReactVideo src="#thankyouVideo" id="thankyou" rotation="0 0 0" width={750} height={750} position={video1Pos} />
+      <AReactVideo src="#mixVideo" id="mix" spherical={true} width={750} height={750} radius="750" position={video1Pos} />
       <AReactVideo src="#haightVideo" id="haight" rotation="0 180 0" width={1200} height={680} position={video2Pos} />
       </>
     );

@@ -2,11 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const AReactImage = (props) => {
-  const radius = `primitive: sphere; radius:${props.radius}`
+  console.log(props);
+  const radius = {
+    primitive: 'sphere',
+    radius:props.radius
+  }
   if(props.spherical){
     return(
     <a-entity geometry={radius} position={props.position} rotation={props.rotation}>
-    <a-image geometry={radius} src={props.src} position="0 0 0" />
+    <a-image geometry={radius} src={props.id} position="0 0 0" />
     </a-entity>
   )
   }else{

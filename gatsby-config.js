@@ -29,6 +29,7 @@ module.exports = {
         icon: 'src/images/planetKevin.png',
         theme_color_in_head: true,
         include_favicon: true,
+        crossOrigin: `use-credentials`,
       },
     },{
       resolve: "gatsby-source-graphql",
@@ -41,14 +42,21 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/static/images/`,
-        name: 'images',
+        path: `${__dirname}/src/assets/data/`,
+        name: 'data',
       },
     },
-    `gatsby-transformer-json`,
-    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/assets/img/`,
+        name: 'img',
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-json`,
+    `gatsby-transformer-remark`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-offline`
   ],
