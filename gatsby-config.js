@@ -35,13 +35,13 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/src/assets/images/`,
-        name: 'assetimages',
+        name: 'images',
       },
     },{
       resolve: "gatsby-source-filesystem",
       options: {
-        path: `${__dirname}/static/images/`,
-        name: 'images',
+        path: `${__dirname}/src/assets/img/`,
+        name: 'img',
       },
     },
     {
