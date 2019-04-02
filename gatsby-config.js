@@ -19,7 +19,6 @@ module.exports = {
         icon: 'src/assets/images/planetKevin.png',
         theme_color_in_head: true,
         include_favicon: true,
-        crossOrigin: `use-credentials`,
       },
     },{
       resolve: "gatsby-source-filesystem",

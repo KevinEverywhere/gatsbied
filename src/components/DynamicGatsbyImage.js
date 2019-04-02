@@ -8,6 +8,7 @@ import { withPrefix } from 'gatsby';
 // gatsby-image component or a native <img> element depending on whether or not
 // the node is of type ImageSharp.
 export default ({ node, ...props }) => {
+  console.log(props);
   // if (node && node.childImageSharp && node.childImageSharp.fluid) {
   if (props && props.fluid) {
     return <GatsbyImage crossOrigin="anonymous" fluid={props.fluid} {...props} />;
