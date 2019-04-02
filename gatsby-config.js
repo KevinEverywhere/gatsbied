@@ -4,7 +4,6 @@ module.exports = {
     author: "Kevin Ready",
     description: "Built from a design by Hunter Chang, this is the website for Kevin Ready"
   },
-  pathPrefix: "/gatsbied",
   plugins: [
     'gatsby-plugin-react-helmet',
     {
@@ -12,7 +11,7 @@ module.exports = {
       options: {
         name: 'PlanetKevin',
         short_name: 'PlanetKevin',
-        start_url: '/gatsbied',
+        start_url: '/',
         background_color: '#000000',
         theme_color: '#000000',
         display: 'standalone',

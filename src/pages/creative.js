@@ -59,7 +59,7 @@ export default CreativePage
 export const fluidImage = graphql`
 fragment fluidImage on File {
   childImageSharp {
-    fluid(maxWidth: 960) {
+    fluid(maxWidth: 1024) {
       ...GatsbyImageSharpFluid
     }
   }

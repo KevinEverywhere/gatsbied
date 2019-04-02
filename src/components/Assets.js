@@ -24,7 +24,6 @@ class Assets extends React.PureComponent {
     return imageAssets;
   }
   componentDidMount(){
-    console.log(this.props);
     import('aframe')
       .then((aframe) => {
           this.setState({
