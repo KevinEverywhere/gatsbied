@@ -1,5 +1,7 @@
 import React from 'react';
 import GatsbyImage from 'gatsby-image';
+import { withPrefix } from 'gatsby';
+
 
 // From https://github.com/orangejellyfish/gatsby-dynamic-image
 // A React component that takes a Gatsby File node and renders either a
@@ -18,11 +20,11 @@ export default ({ node, ...props }) => {
 
   // eslint-disable-next-line jsx-a11y/alt-text
   if (node && node.publicURL) {
-    return <img alt="Gallery item" src={props.src} crossOrigin="anonymous" {...props} />;
+    return <img alt="Gallery item" src={withPrefix(props.src)} crossOrigin="anonymous" {...props} />;
   }
 
   // eslint-disable-next-line jsx-a11y/alt-text
-  return <img alt="Gallery item" src={props.src} crossOrigin="anonymous" {...props} />;
+  return <img alt="Gallery item" src={withPrefix(props.src)} crossOrigin="anonymous" {...props} />;
 };
 
 // import { withPrefix } from 'gatsby';

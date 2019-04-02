@@ -10,12 +10,12 @@ const AReactImage = (props) => {
   if(props.spherical){
     return(
     <a-entity geometry={radius} position={props.position} rotation={props.rotation}>
-    <a-image geometry={radius} src={props.src} position="0 0 0" />
+    <a-image geometry={radius} src={props.fluid.src} position="0 0 0" />
     </a-entity>
   )
   }else{
     return(<a-entity position={props.position} rotation={props.rotation}>
-      <a-image material="opacity:0.8" src={props.src} width={props.width} height={props.height} position="0 0 0" />
+      <a-image material="opacity:0.8" src={props.fluid.src} width={props.width} height={props.height} position="0 0 0" />
     </a-entity>)
   }
 }

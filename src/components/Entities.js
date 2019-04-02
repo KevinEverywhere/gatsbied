@@ -17,14 +17,15 @@ class Entities extends React.PureComponent {
   builtImageAssets = () => {
     const imageAssets =this.props.data.allFile.edges.map((node, index, arr) => {
       if(node && node.node && node.node.childImageSharp && node.node.childImageSharp.fluid){
-        const itemZ = node.node.childImageSharp.fluid.src;
+        const fluid = node.node.childImageSharp.fluid;
+        // const itemZ = node.node.childImageSharp.fluid.src;
         const rot =  index % 2 === 0 ? "0 270 0" : "0 90 0";
         const hPos = Math.floor(arr.length/4) - Math.floor(index/2);
         const distanceBetween = this.state.distanceBetween;
         const pos =  index % 2 === 0 ?
           `${distanceBetween} 2 ${distanceBetween * hPos}` :
           `${-distanceBetween} 2 ${distanceBetween * hPos}`;
-        return <AReactImage key={node.node.id} src={itemZ} rotation={rot} width={distanceBetween} height={distanceBetween} position={pos} />
+        return <AReactImage key={node.node.id} fluid={fluid} rotation={rot} width={distanceBetween} height={distanceBetween} position={pos} />
       }else{
         return null;
       }
