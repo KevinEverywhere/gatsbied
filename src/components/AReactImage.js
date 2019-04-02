@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const AReactImage = (props) => {
-  console.log(props);
+  // console.log(props);
   const radius = {
     primitive: 'sphere',
     radius:props.radius

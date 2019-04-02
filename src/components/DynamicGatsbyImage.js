@@ -6,19 +6,23 @@ import GatsbyImage from 'gatsby-image';
 // gatsby-image component or a native <img> element depending on whether or not
 // the node is of type ImageSharp.
 export default ({ node, ...props }) => {
-  if (node && node.childImageSharp && node.childImageSharp.fluid) {
-    return <GatsbyImage crossOrigin="anonymous" fluid={node.childImageSharp.fluid} {...props} />;
+  // if (node && node.childImageSharp && node.childImageSharp.fluid) {
+  if (props && props.fluid) {
+    return <GatsbyImage crossOrigin="anonymous" fluid={props.fluid} {...props} />;
   }
 
-  if (node && node.childImageSharp && node.childImageSharp.fixed) {
-    return <GatsbyImage crossOrigin="anonymous" fixed={node.childImageSharp.fixed} {...props} />;
+  // if (node && node.childImageSharp && node.childImageSharp.fixed) {
+  if (props && props.fixed) {
+    return <GatsbyImage crossOrigin="anonymous" fixed={props.fixed} {...props} />;
   }
 
   // eslint-disable-next-line jsx-a11y/alt-text
   if (node && node.publicURL) {
-    return <img alt="Gallery item" crossOrigin="anonymous" src={node.publicURL} {...props} />;
+    return <img alt="Gallery item" src={props.src} crossOrigin="anonymous" {...props} />;
   }
 
   // eslint-disable-next-line jsx-a11y/alt-text
-  return <img alt="Gallery item" crossOrigin="anonymous" {...props} />;
+  return <img alt="Gallery item" src={props.src} crossOrigin="anonymous" {...props} />;
 };
+
+// import { withPrefix } from 'gatsby';

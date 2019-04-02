@@ -9,7 +9,7 @@ class Assets extends React.PureComponent {
   }
   buildImageAssets = () => {
     const imageAssets = this.props.data.allFile.edges.map((node, index) => {
-      if(node && node.node && node.node.childImageSharp){
+      if(node && node.node && node.node.childImageSharp && node.node.childImageSharp.fluid){
         return (
           <DynamicGatsbyImage
             alt={node.node.childImageSharp.fluid.originalName}
