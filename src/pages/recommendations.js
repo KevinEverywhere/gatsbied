@@ -1,6 +1,5 @@
 import React from 'react'
-// import WorkLayout from '../components/WorkLayout'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 
 import SmallHeader from '../components/SmallHeader'
 import MainWork from '../components/MainWork'
@@ -66,34 +65,3 @@ class RecommendationsPage extends React.Component {
 }
 
 export default RecommendationsPage
-//
-// return (
-//   <StaticQuery
-//     query={graphql`
-//       query SiteTitleQuery {
-//         site {
-//           siteMetadata {
-//             title
-//           }
-//         }
-//       }
-//     `}
-//     render={data => (
-//       <>
-//         <Helmet
-//           title={data.site.siteMetadata.title}
-//           meta={[
-//             { name: 'description', content: 'Kevin Ready is a developer, musician and adventurist.' },
-//             { name: 'keywords', content: 'freelance,react,node,javascript,contractor,developer' },
-//           ]}
-//         >
-//           <html lang="en" />
-//           <meta name="theme-color" content="#000000" />
-//           <meta name="apple-mobile-web-app-capable" content="yes" />
-//           <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-//           <meta name="description" content="Kevin Ready | Creativist" />
-//         </Helmet>
-//         {content}
-//       </>
-//     )}
-//   />

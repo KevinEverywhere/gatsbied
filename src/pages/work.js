@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 import SmallHeader from '../components/SmallHeader'
 import MainWork from '../components/MainWork'
 import Footer from '../components/Footer'

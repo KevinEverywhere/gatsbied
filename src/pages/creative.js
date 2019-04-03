@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 import GyroController from '../components/GyroController'
 import SmallHeader from '../components/SmallHeader'
 import MainCreative from '../components/MainCreative'

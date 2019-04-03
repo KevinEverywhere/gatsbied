@@ -47,6 +47,9 @@
     "deployMaster": "gatsby build && gh-pages -d public -b master",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "peerDependencies": {
+    "gatsby-cli": "^2.5.4"
+  },
   "devDependencies": {
     "prettier": "^1.14.2"
   },
