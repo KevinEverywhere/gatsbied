@@ -44,7 +44,7 @@ class MainWork extends React.Component {
           minWidth: `${minWidth}px`
         }}>
           <h2>About Kevin</h2>
-          <p>Kevin Ready has kept up with the most current technolgies creating code, players, templates and content for startups, agencies, and digital media clients, since Bill Clinton was in office. This site was created in 2019 using react and gatsby, with graphql, aframe, sass, vanilla JavaScript, and others, optimized for mobile. Kevin is often looking for contract or permanent work using software and technologies for which he is passionate.</p>
+          <p>Kevin Ready has kept up with the most current technolgies creating code, players, templates and content for startups, agencies, and digital media clients, since Bill Clinton was in office. This site was created in 2019 using react and gatsby, with graphql, aframe, sass, vanilla JavaScript, and others, optimized for mobile. He is actively looking for contract or permanent work using software and technologies for which he is passionate.</p>
           <p style={{display: 'none'}}>
           More information can be found at the following links.
           </p>

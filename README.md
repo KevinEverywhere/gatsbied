@@ -1,6 +1,6 @@
-# gatsby-starter-dimension
+# Planet Kevin
 
-**This is a starter for Gatsby.js V2.**
+**This is the code behind the 2019 version of the planetkevin.com website.**
 
 **The older V1 version of this starter can be found on the v1 branch:**
 

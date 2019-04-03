@@ -9,6 +9,7 @@
     "aframe-extras": "6.0.0",
     "axios": "0.18.0",
     "crypto": "1.0.1",
+    "eslint-plugin-graphql": "3.0.3",
     "gatsby": "^2.0.76",
     "gatsby-image": "2.0.35",
     "gatsby-plugin-manifest": "^2.0.9",
@@ -29,11 +30,12 @@
     "react-dom": "^16.6.3",
     "react-helmet": "^5.2.0",
     "react-redux": "6.0.1",
-    "redux": "4.0.1",
-    "vue": "2.6.6"
+    "redux": "4.0.1"
   },
   "keywords": [
     "gatsby",
+    "react",
+    "aframe",
     "Kevin Ready"
   ],
   "license": "MIT",
