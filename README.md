@@ -2,18 +2,11 @@
 
 **This is the code behind the 2019 version of the planetkevin.com website.**
 
-**The older V1 version of this starter can be found on the v1 branch:**
+**This began from a V2 starter project**
 
-Gatsby.js V2 starter based on the Dimension site template, designed by HTML5 UP. Check out https://codebushi.com/gatsby-starters/ for more Gatsby starters and templates.
+This readme file is currently being updated.
 
-## Preview
 
-https://gatsby-dimension.surge.sh/
 
-## Installation
 
-Install this starter (assuming Gatsby is installed) by running from your CLI:
-<br/>
-`gatsby new gatsby-starter-dimension https://github.com/codebushi/gatsby-starter-dimension`
-
-Run `gatsby develop` in the terminal to start the dev site.
+From an initial design by https://gatsby-dimension.surge.sh/

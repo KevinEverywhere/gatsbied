@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const AReactImage = (props) => {
-  // console.log(props);
   const radius = {
     primitive: 'sphere',
     radius:props.radius
@@ -30,7 +29,3 @@ AReactImage.propTypes={
 }
 
 export default AReactImage
-
-/**
- * <AReactImage src={item} rotation={rot} width={distanceBetween} height={distanceBetween} position={pos} />
- */

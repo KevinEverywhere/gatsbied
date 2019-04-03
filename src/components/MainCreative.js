@@ -19,7 +19,6 @@ class MainCreative extends React.PureComponent {
             init: function() {
               this.el.addEventListener("click", (e) => {
                 try{
-                  console.log(document.querySelector(this.el.getAttribute('src')).paused);
                   if(document.querySelector(this.el.getAttribute('src')).paused){
                     document.querySelector(this.el.getAttribute('src')).play()
                   }else{

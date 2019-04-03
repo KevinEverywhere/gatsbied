@@ -5,9 +5,6 @@ class Cameras extends React.PureComponent {
     super();
     this.state={cameras:null}
   }
-  clicked(e){
-    console.log(e)
-  }
   createdAnimations(fromAnimArray, sequential){
     let myAnimations;
     if(!sequential){
@@ -44,11 +41,3 @@ class Cameras extends React.PureComponent {
 }
 
 export default Cameras
-
-
-          // return `animation__${i}="property: ${anim.property}; to: 0 400 0; dur: 15000"`
-           // animation__1="property: position; to: 0 200 460; dur: 20000"
-           // animation__2="property: rotation; to: 0 400 0; dur: 15000"
-           // animation__3="property: rotation; to: 0 540 0;delay:15000; from: 0 400 0; dur: 5000"
-          // document.querySelector('#main-camera').setAttribute('camera', 'active', true);
-          // console.log(document.querySelector('#main-camera'));

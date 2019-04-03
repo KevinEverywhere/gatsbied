@@ -18,7 +18,6 @@ class Entities extends React.PureComponent {
     const imageAssets =this.props.data.allFile.edges.map((node, index, arr) => {
       if(node && node.node && node.node.childImageSharp && node.node.childImageSharp.fluid){
         const fluid = node.node.childImageSharp.fluid;
-        // const itemZ = node.node.childImageSharp.fluid.src;
         const rot =  index % 2 === 0 ? "0 270 0" : "0 90 0";
         const hPos = Math.floor(arr.length/4) - Math.floor(index/2);
         const distanceBetween = this.state.distanceBetween;

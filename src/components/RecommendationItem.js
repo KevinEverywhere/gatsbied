@@ -6,9 +6,6 @@ class RecommendationItem extends React.Component {
     super();
   }
   render() {
-      // return(
-      //   <li key={this.props.key}>{this.props.item.company}</li>
-      // )
     return (
       <details key={this.props.item.key}>
       <summary>{this.props.item.First} {this.props.item.Last} </summary>
