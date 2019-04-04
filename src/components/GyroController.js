@@ -8,6 +8,8 @@ class GyroController extends React.Component {
     this.state={
       orientation: 0,
       startingPoint:null,
+      vectors: ['xPos', 'xNeg', 'zPos', 'zNeg'],
+      vector: 'zPos',
     }
   }
 
@@ -48,9 +50,22 @@ class GyroController extends React.Component {
     try{
       if(document.querySelector('#rig')){
         const old=document.querySelector('#rig').getAttribute('position');
-        document.querySelector('#rig').setEntityAttribute('position',
-          old,
-          {x:old.x,y:old.y,z:(old.z - this.upDownTest(this.onUpDownAxis(e)))});
+        switch(this.state.vector){
+          case 'xPos':
+          document.querySelector('#rig').setEntityAttribute('position',
+            old,
+            {x:(old.x - this.upDownTest(this.onUpDownAxis(e))),
+              y:old.y,
+              z:old.z});
+            break;
+          case 'zPos':
+          document.querySelector('#rig').setEntityAttribute('position',
+            old,
+            {x:old.x,y:old.y,z:(old.z - this.upDownTest(this.onUpDownAxis(e)))});
+            break;
+          default:
+            break;
+        }
       }
     }catch(oops){
 
