@@ -7,9 +7,13 @@ class GyroController extends React.Component {
     this.orientationChangeHandler=this.orientationChangeHandler.bind(this)
     this.state={
       orientation: 0,
+      timer: Date.now(),
+      distanceBetween: 60, // duplicated in Entities, need to make one variable for both
+      timeoutLength: 2000,
       startingPoint:null,
       vectors: ['xPos', 'xNeg', 'zPos', 'zNeg'],
-      vector: 'zPos',
+      vector: 'xPos',
+      changedDirection: -1,
     }
   }
 
@@ -18,6 +22,9 @@ class GyroController extends React.Component {
     window.removeEventListener('orientationchange', this.orientationChangeHandler, false);
   }
   componentDidMount(){
+    this.timeoutId = setTimeout(() => {
+        this.setState({changedDirection: 0, timer:Date.now()});
+    }, 100);
     window.addEventListener('deviceorientation', this.deviceOrientationHandler, false);
     window.addEventListener('orientationchange', this.orientationChangeHandler, false);
   }
@@ -46,29 +53,88 @@ class GyroController extends React.Component {
     })
   }
 
+  selectView=(old, e)=>{
+    if(
+      (Math.abs(old.x)<this.state.distanceBetween) &&
+      (Math.abs(old.z)<this.state.distanceBetween)
+    ){
+      let theDir = Math.floor(
+        (document.querySelector('#main-camera').getAttribute('rotation').y + 45)/90
+      );
+      let vector;
+      switch(theDir % 4){
+        case 0:
+          vector = 'xPos';
+          break;
+        case 1:
+          vector = 'zPos';
+          break;
+        case 2:
+          vector = 'xNeg';
+          break;
+        case 3:
+          vector = 'zNeg';
+          break;
+        default:
+          vector = this.state.vector;
+          break;
+      }
+      if(this.state.vector !== vector){
+        this.setState({ vector })
+      }
+    }
+  }
+
   testPosition=(e)=>{
     try{
       if(document.querySelector('#rig')){
         const old=document.querySelector('#rig').getAttribute('position');
-        switch(this.state.vector){
-          case 'xPos':
-          document.querySelector('#rig').setEntityAttribute('position',
-            old,
-            {x:(old.x - this.upDownTest(this.onUpDownAxis(e))),
-              y:old.y,
-              z:old.z});
-            break;
-          case 'zPos':
-          document.querySelector('#rig').setEntityAttribute('position',
-            old,
-            {x:old.x,y:old.y,z:(old.z - this.upDownTest(this.onUpDownAxis(e)))});
-            break;
-          default:
-            break;
+        if((Date.now() - this.state.timer) > this.state.timeoutLength){
+          switch(this.state.vector){
+            case 'xPos':
+              document.querySelector('#rig').setEntityAttribute('position',
+                old,{
+                  x:(old.x + this.upDownTest(this.onUpDownAxis(e))),
+                  y:old.y,
+                  z:old.z
+                }
+              );
+              break;
+            case 'xNeg':
+              document.querySelector('#rig').setEntityAttribute('position',
+                old,{
+                  x:(old.x - this.upDownTest(this.onUpDownAxis(e))),
+                  y:old.y,
+                  z:old.z
+                }
+              );
+              break;
+            case 'zPos':
+              document.querySelector('#rig').setEntityAttribute('position',
+                old,{
+                  x:old.x,
+                  y:old.y,
+                  z:(old.z + this.upDownTest(this.onUpDownAxis(e)))
+                });
+              break;
+            case 'zNeg':
+              document.querySelector('#rig').setEntityAttribute('position',
+                old,{
+                  x:old.x,
+                  y:old.y,
+                  z:(old.z - this.upDownTest(this.onUpDownAxis(e)))
+                }
+              );
+              break;
+            default:
+              break;
+          }
+        }else{
+          this.selectView(old, e)
         }
       }
     }catch(oops){
-
+      console.log(oops)
     }
   }
 
