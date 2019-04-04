@@ -69,7 +69,7 @@ class MainCreative extends React.PureComponent {
               <a-scene cursor="rayOrigin: mouse" embedded style={{width:'100%',height:'100%'}}>
                 <Assets data={this.props.data} />
                 <Entities data={this.props.data} />
-                <Cameras />
+                <Cameras data={this.props.data} />
               </a-scene>
             </main>
           )})

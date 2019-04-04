@@ -19,7 +19,7 @@ export default function HTML(props) {
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
         <noscript key="noscript" id="gatsby-noscript">
-          This app will work best with JavaScript enabled.
+          This app will only work on JavaScript enabled devices with gyroscopes.
         </noscript>
         <div
           key={`body`}
