@@ -53,84 +53,81 @@ class GyroController extends React.Component {
     })
   }
 
-  selectView=(old, e)=>{
-    if(
-      (Math.abs(old.x)<this.state.distanceBetween) &&
-      (Math.abs(old.z)<this.state.distanceBetween)
-    ){
-      let theDir = Math.floor(
-        (document.querySelector('#main-camera').getAttribute('rotation').y + 45)/90
-      );
-      let vector;
-      switch(theDir % 4){
-        case 0:
-          vector = 'xPos';
-          break;
-        case 1:
-          vector = 'zPos';
-          break;
-        case 2:
-          vector = 'xNeg';
-          break;
-        case 3:
-          vector = 'zNeg';
-          break;
-        default:
-          vector = this.state.vector;
-          break;
-      }
-      if(this.state.vector !== vector){
-        this.setState({ vector })
-      }
+  selectView = () => {
+    const theDir = Math.floor(
+      (document.querySelector('#main-camera').getAttribute('rotation').y + 45)/90
+    ) % 4;
+    let vector;
+    switch(theDir){
+      case 1:
+        vector = 'xPos';
+        break;
+      case 2:
+        vector = 'zPos';
+        break;
+      case 3:
+        vector = 'xNeg';
+        break;
+      case 0:
+        vector = 'zNeg';
+        break;
+      default:
+        vector = this.state.vector;
+        break;
     }
+    return vector;
   }
 
   testPosition=(e)=>{
     try{
       if(document.querySelector('#rig')){
         const old=document.querySelector('#rig').getAttribute('position');
-        if((Date.now() - this.state.timer) > this.state.timeoutLength){
-          switch(this.state.vector){
-            case 'xPos':
-              document.querySelector('#rig').setEntityAttribute('position',
-                old,{
-                  x:(old.x + this.upDownTest(this.onUpDownAxis(e))),
-                  y:old.y,
-                  z:old.z
-                }
-              );
-              break;
-            case 'xNeg':
-              document.querySelector('#rig').setEntityAttribute('position',
-                old,{
-                  x:(old.x - this.upDownTest(this.onUpDownAxis(e))),
-                  y:old.y,
-                  z:old.z
-                }
-              );
-              break;
-            case 'zPos':
-              document.querySelector('#rig').setEntityAttribute('position',
-                old,{
-                  x:old.x,
-                  y:old.y,
-                  z:(old.z + this.upDownTest(this.onUpDownAxis(e)))
-                });
-              break;
-            case 'zNeg':
-              document.querySelector('#rig').setEntityAttribute('position',
-                old,{
-                  x:old.x,
-                  y:old.y,
-                  z:(old.z - this.upDownTest(this.onUpDownAxis(e)))
-                }
-              );
-              break;
-            default:
-              break;
+        if(
+          (Math.abs(old.x)<this.state.distanceBetween/2) &&
+          (Math.abs(old.z)<this.state.distanceBetween/2)
+        ){
+          if(this.state.vector !== this.selectView()){
+            this.setState({ vector: this.selectView() })
           }
-        }else{
-          this.selectView(old, e)
+        }
+        switch(this.state.vector){
+          case 'xPos':
+            document.querySelector('#rig').setEntityAttribute('position',
+              old,{
+                x:(old.x + this.upDownTest(this.onUpDownAxis(e))),
+                y:old.y,
+                z:old.z
+              }
+            );
+            break;
+          case 'xNeg':
+            document.querySelector('#rig').setEntityAttribute('position',
+              old,{
+                x:(old.x - this.upDownTest(this.onUpDownAxis(e))),
+                y:old.y,
+                z:old.z
+              }
+            );
+            break;
+          case 'zNeg':
+            document.querySelector('#rig').setEntityAttribute('position',
+              old,{
+                x:old.x,
+                y:old.y,
+                z:(old.z + this.upDownTest(this.onUpDownAxis(e)))
+              });
+            break;
+          case 'zPos':
+            document.querySelector('#rig').setEntityAttribute('position',
+              old,{
+                x:old.x,
+                y:old.y,
+                z:(old.z - this.upDownTest(this.onUpDownAxis(e)))
+              }
+            );
+            break;
+          default:
+            break;
         }
       }
     }catch(oops){

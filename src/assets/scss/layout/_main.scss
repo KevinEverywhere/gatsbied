@@ -155,6 +155,18 @@
 			text-shadow: 1px 1px #222;
 		}
 
+		#instructions{
+			z-index: 12345;
+		  transform-style:preserve-3d;
+			position: absolute;
+			margin: auto;
+			font-weight: 450;
+			left:30vw;
+			top:40vh;
+			text-shadow: 1px 1px #222;
+		}
+
+
 		.lglogo{
 			width: 10vh;
 			height: 10vh;
