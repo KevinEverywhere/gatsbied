@@ -26,7 +26,11 @@ class Cameras extends React.PureComponent {
             this.setState({
               cameras:(
                 <a-entity id="rig" position="0 10 -3" rotation="0 0 0">
-                  <a-camera far="20000" position="0 2 0" id="main-camera">
+                  <a-camera
+                    keyboard-controls
+                    far="20000"
+                    position="0 2 0"
+                    id="main-camera">
                     <a-cursor></a-cursor>
                   </a-camera>
                 </a-entity>

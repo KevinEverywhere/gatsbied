@@ -90,8 +90,7 @@ class Entities extends React.PureComponent {
     // plane that is used to click back and forth to full screen.
     return (
       <>
-        <a-plane material="opacity:0.31" un-planned-texture position="0 -100 4" rotation="-90 0 0" width="5000" height="5000" color="#111" />
-        <a-sky geometry="radius:16000" color="#fff" src="#universe_4096Image" />
+        <a-sky geometry="radius:12000" color="#fff" src="#universe_4096Image" />
       </>
     );
   }
@@ -118,3 +117,5 @@ class Entities extends React.PureComponent {
 }
 
 export default Entities
+
+//   <a-plane material="opacity:0.31" un-planned-texture position="0 -100 4" rotation="-90 0 0" width="5000" height="5000" color="#111" />
