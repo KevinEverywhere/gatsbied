@@ -50,7 +50,18 @@ class ExperimentalPage extends React.Component {
         <SmallHeader timeout={this.state.timeout} active="creative" />
           <GyroController>
             <MainExperimental data={this.props.data} setWrapperRef={this.setWrapperRef}>
-              <CameraHolder />
+            <CameraHolder facingMode="environment"
+              position="300 20 -300"
+              rotation="0 315 0"
+              camera="webcam"
+              id="cameraRig"
+             />
+             <CameraHolder facingMode="user"
+              position="-300 20 -300"
+              rotation="0 45 0"
+              camera="webcamBack"
+              id="cameraRig2"
+             />
             </MainExperimental>
             { Instructions() }
           </GyroController>
@@ -104,3 +115,13 @@ query experimentalPageQuery{
   }
 }
 `;
+
+/**
+ *                <CameraHolder facingMode="user"
+                  position="-300 20 -300"
+                  rotation="0 135 0"
+                  camera="webcamFront"
+                  id="cameraRig2"
+                 />
+
+ */

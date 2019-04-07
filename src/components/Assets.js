@@ -32,6 +32,7 @@ class Assets extends React.PureComponent {
               <img crossOrigin="anonymous" alt="universe background" src={withPrefix('/images/universe_4096.jpg')} id="universe_4096Image" />
               { this.buildImageAssets() }
               <video id="webcam" webkit-playsinline="true" playsInline></video>
+              <video id="webcamBack" webkit-playsinline="true" playsInline></video>
               <video id="haightVideo" webkit-playsinline="" playsInline="" autoPlay="" controls="" src={withPrefix('/videos/satTemptingHaight.mp4')} crossOrigin="anonymous" />
               <video id="mixVideo" webkit-playsinline="" playsInline="" autoPlay="" controls="" src={withPrefix('/videos/mix_injected.mp4')} crossOrigin="anonymous" />
             </a-assets>

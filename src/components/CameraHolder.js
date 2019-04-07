@@ -14,19 +14,21 @@ class CameraHolder extends React.PureComponent {
     videoElem.srcObject = null;
   }
   setVideo=()=>{
+    const me=this;
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+      const srcTarget = `src: #${me.props.camera}`
       this.setState({
         activeCamera:(
-          <a-entity id="cameraRig" position="300 20 -300" rotation="0 315 0">
+          <a-entity id={this.props.id} position={this.props.position} rotation={this.props.rotation}>
             <a-entity position="0 2 0"
-            geometry="primitive: plane; width: 320; height:180"
-            material="src: #webcam"></a-entity>
+            geometry="primitive: plane; width: 240; height:180"
+            material={srcTarget}></a-entity>
           </a-entity>
         )
       })
-      navigator.mediaDevices.getUserMedia({ audio: true, video: { facingMode: "environment" }})
+      navigator.mediaDevices.getUserMedia({ audio: true, video: { facingMode: this.props.facingMode }})
       .then(function(stream) {
-        var video = document.getElementById('webcam');
+        var video = document.getElementById(me.props.camera);
         if ("srcObject" in video) {
           video.srcObject=stream;
         }else{
@@ -42,8 +44,12 @@ class CameraHolder extends React.PureComponent {
     }
   }
   componentWillUnmount(){
-    var video = document.getElementById('webcam');
-    this.stopVideo(video);
+    try{
+      var video = document.getElementById(this.props.camera);
+      this.stopVideo(video);
+    }catch(oops){
+       // video not playing
+    }
   }
   componentDidMount(){
     import('aframe')
