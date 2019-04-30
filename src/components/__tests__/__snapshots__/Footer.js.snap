@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders correctly 1`] = `
+<footer
+  id="footer"
+  style={Object {}}
+>
+  <p
+    className="copyright"
+  >
+    Derived by Kevin Ready w/
+    <a
+      href="https://www.gatsbyjs.org/"
+    >
+      gatsby
+    </a>
+     from a design by 
+    <a
+      href="https://html5up.net"
+    >
+      HTML5 UP
+    </a>
+  </p>
+</footer>
+`;

@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly 1`] = `
+<header
+  id="header"
+  style={Object {}}
+>
+  <div
+    className="logo"
+  >
+    <span
+      className="icon fa-bicycle"
+    />
+  </div>
+  <div
+    className="content"
+  >
+    <div
+      className="inner"
+    >
+      <h2>
+        Welcome!
+      </h2>
+      <p
+        className="singleSpace"
+      >
+        I am a Mobile-first
+      </p>
+      <p
+        className="singleSpace"
+      >
+        front end developer who enjoys
+      </p>
+      <p
+        className="singleSpace"
+      >
+        playing keytar and bicycling
+      </p>
+      <p
+        className="singleSpace"
+      >
+        when not pushing cloud content.
+      </p>
+      <p>
+        ©2019 • Kevin Ready
+      </p>
+    </div>
+  </div>
+  <nav>
+    <ul>
+      <li>
+        <a
+          href="work"
+        >
+          Work
+        </a>
+      </li>
+      <li>
+        <a
+          href="creative"
+        >
+          Creative
+        </a>
+      </li>
+      <li>
+        <a
+          href="contact"
+        >
+          Contact
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+`;

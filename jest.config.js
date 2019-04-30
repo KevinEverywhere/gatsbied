@@ -1,16 +1,37 @@
-// module.exports = {
-//   transform: {
-//     "^.+\\.jsx?$": `<rootDir>/jest-preprocess.js`,
-//   },
-//   moduleNameMapper: {
-//     ".+\\.(css|styl|less|sass|scss)$": `identity-obj-proxy`,
-//     ".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": `<rootDir>/__mocks__/file-mock.js`,
-//   },
-//   testPathIgnorePatterns: [`node_modules`, `.cache`],
-//   transformIgnorePatterns: [`node_modules/(?!(gatsby)/)`],
-//   globals: {
-//     __PATH_PREFIX__: ``,
-//   },
-//   testURL: `http://localhost:8000`,
-//   setupFiles: [`<rootDir>/loadershim.js`],
-// }
+module.exports = {
+  transform: {
+    "^.+\\.jsx?$": `<rootDir>/jest-preprocess.js`,
+  },
+  moduleNameMapper: {
+    ".+\\.(css|styl|less|sass|scss)$": `identity-obj-proxy`,
+    ".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": `<rootDir>/__mocks__/file-mock.js`,
+  },
+  testPathIgnorePatterns: ['\\\\node_modules\\\\', `.cache`],
+  transformIgnorePatterns: [`<rootDir>/node_modules/(?!(gatsby)/)`],
+  globals: {
+    __PATH_PREFIX__: ``,
+  },
+  testURL: `http://localhost:8000`,
+  setupFiles: [`<rootDir>/loadershim.js`,`<rootDir>/enzyme.config.js`],
+
+
+  // Automatically clear mock calls and instances between every test
+   clearMocks: true,
+   // An array of glob patterns indicating a set of files for which coverage information should be collected
+   collectCoverageFrom: [`src/**/*.{js,jsx,mjs}`],
+   // The directory where Jest should output its coverage files
+   coverageDirectory: `coverage`,
+   // An array of file extensions your modules use
+   moduleFileExtensions: ['js', 'json', 'jsx'],
+   // The paths to modules that run some code to configure or set up the testing environment before each test
+   setupFiles: ['<rootDir>/enzyme.config.js'],
+   // The test environment that will be used for testing
+   testEnvironment: 'jsdom',
+
+   // The glob patterns Jest uses to detect test files
+   testMatch: ['**/__tests__/**/*.js?(x)', '**/?(*.)+(spec|test).js?(x)'],
+   
+   // Indicates whether each individual test should be reported during the run
+   verbose: false,
+
+}

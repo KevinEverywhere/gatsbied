@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AReactVideo renders correctly 1`] = `
+<a-entity>
+  <a-video
+    controls={true}
+    position="0 0 0"
+    video-texture={true}
+  />
+</a-entity>
+`;

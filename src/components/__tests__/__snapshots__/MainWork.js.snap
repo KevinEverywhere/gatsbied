@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainWork renders correctly 1`] = `
+<main>
+  <div
+    style={
+      Object {
+        "color": "white",
+        "fontWeight": "500",
+        "minWidth": "240px",
+        "padding": "1rem",
+        "textShadow": "1px 1px black",
+        "width": "60%",
+      }
+    }
+  >
+    <h2>
+      About Kevin
+    </h2>
+    <p>
+      Kevin Ready has kept up with the most current technologies creating code, players, templates and content for startups, agencies, and digital media clients, since Bill Clinton was in office. This site was created in 2019 using react and gatsby, with graphql, aframe, sass, vanilla JavaScript, and others, optimized for mobile. He is looking for contract or permanent work using software and technologies for which he is passionate.
+    </p>
+    <p
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+    >
+      More information can be found at the following links.
+    </p>
+  </div>
+  <ul
+    className="horizontalBar"
+  >
+    <li>
+      <a
+        href="/contact"
+      >
+        Contact
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://linkedin.com/in/planetkevin/"
+      >
+        LinkedIn
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://github.com/kevineverywhere/"
+      >
+        GitHub
+      </a>
+    </li>
+  </ul>
+</main>
+`;

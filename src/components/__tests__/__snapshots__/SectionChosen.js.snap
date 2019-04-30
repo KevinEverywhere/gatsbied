@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SectionChosen renders correctly 1`] = `
+<nav>
+  <a
+    href="/"
+  >
+    <div
+      className="smlogo"
+    >
+      <span
+        className="icon fa-bicycle"
+      />
+    </div>
+  </a>
+  <ul>
+    <li>
+      <a
+        href="work"
+      >
+        Work
+      </a>
+    </li>
+    <li>
+      <a
+        href="creative"
+      >
+        Creative
+      </a>
+    </li>
+    <li>
+      <a
+        href="contact"
+      >
+        Contact
+      </a>
+    </li>
+  </ul>
+</nav>
+`;

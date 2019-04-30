@@ -25,8 +25,39 @@ class GyroController extends React.Component {
     this.timeoutId = setTimeout(() => {
         this.setState({changedDirection: 0, timer:Date.now()});
     }, 100);
+    document.addEventListener('keydown', this.keyHandler, false);
     window.addEventListener('deviceorientation', this.deviceOrientationHandler, false);
     window.addEventListener('orientationchange', this.orientationChangeHandler, false);
+  }
+
+  keyHandler = (event) => {
+    const keyName = event.key;
+    console.log(keyName);
+    switch(keyName){
+      case "ArrowRight":
+        this.moveOnVector('xPos', this.state.distanceBetween/4);
+        break;
+      case "ArrowLeft":
+        this.moveOnVector('xNeg', this.state.distanceBetween/4);
+        break;
+      case "ArrowUp":
+        this.moveOnVector('yPos', this.state.distanceBetween/4);
+        break;
+      case "ArrowDown":
+        this.moveOnVector('yNeg', this.state.distanceBetween/4);
+        break;
+    }
+    // if (keyName === 'Control') {
+    //   // do not alert when only Control key is pressed.
+    //   return;
+    // }
+    // if (event.ctrlKey) {
+    //   // Even though event.key is not 'Control' (e.g., 'a' is pressed),
+    //   // event.ctrlKey may be true if Ctrl key is pressed at the same time.
+    //   alert(`Combination of ctrlKey + ${keyName}`);
+    // } else {
+    //   alert(`Key pressed ${keyName}`);
+    // }
   }
 
   onUpDownAxis = e => {
@@ -77,58 +108,66 @@ class GyroController extends React.Component {
     }
     return vector;
   }
+  getOld = () =>{
+    const old=document.querySelector('#rig').getAttribute('position');
+    if(
+      (Math.abs(old.x)<this.state.distanceBetween/2) &&
+      (Math.abs(old.z)<this.state.distanceBetween/2)
+    ){
+      if(this.state.vector !== this.selectView()){
+        this.setState({ vector: this.selectView() })
+      }
+    }
+    return old;
+  }
+
+  moveOnVector=(which, what)=>{
+    const old = this.getOld();
+    switch(which){
+      case 'xPos':
+        document.querySelector('#rig').setEntityAttribute('position',
+          old,{
+            x:(old.x + what),
+            y:old.y,
+            z:old.z
+          }
+        );
+        break;
+      case 'xNeg':
+        document.querySelector('#rig').setEntityAttribute('position',
+          old,{
+            x:(old.x - what),
+            y:old.y,
+            z:old.z
+          }
+        );
+        break;
+      case 'zNeg':
+        document.querySelector('#rig').setEntityAttribute('position',
+          old,{
+            x:old.x,
+            y:old.y,
+            z:(old.z + what)
+          });
+        break;
+      case 'zPos':
+        document.querySelector('#rig').setEntityAttribute('position',
+          old,{
+            x:old.x,
+            y:old.y,
+            z:(old.z - what)
+          }
+        );
+        break;
+      default:
+        break;
+    }
+  }
 
   testPosition=(e)=>{
     try{
       if(document.querySelector('#rig')){
-        const old=document.querySelector('#rig').getAttribute('position');
-        if(
-          (Math.abs(old.x)<this.state.distanceBetween/2) &&
-          (Math.abs(old.z)<this.state.distanceBetween/2)
-        ){
-          if(this.state.vector !== this.selectView()){
-            this.setState({ vector: this.selectView() })
-          }
-        }
-        switch(this.state.vector){
-          case 'xPos':
-            document.querySelector('#rig').setEntityAttribute('position',
-              old,{
-                x:(old.x + this.upDownTest(this.onUpDownAxis(e))),
-                y:old.y,
-                z:old.z
-              }
-            );
-            break;
-          case 'xNeg':
-            document.querySelector('#rig').setEntityAttribute('position',
-              old,{
-                x:(old.x - this.upDownTest(this.onUpDownAxis(e))),
-                y:old.y,
-                z:old.z
-              }
-            );
-            break;
-          case 'zNeg':
-            document.querySelector('#rig').setEntityAttribute('position',
-              old,{
-                x:old.x,
-                y:old.y,
-                z:(old.z + this.upDownTest(this.onUpDownAxis(e)))
-              });
-            break;
-          case 'zPos':
-            document.querySelector('#rig').setEntityAttribute('position',
-              old,{
-                x:old.x,
-                y:old.y,
-                z:(old.z - this.upDownTest(this.onUpDownAxis(e)))
-              }
-            );
-            break;
-          default:
-            break;
-        }
+        this.moveOnVector(this.state.vector, this.upDownTest(this.onUpDownAxis(e)));
       }
     }catch(oops){
       console.log(oops)

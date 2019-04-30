@@ -4,10 +4,12 @@
   "version": "1.0.0",
   "author": "Kevin Ready",
   "dependencies": {
+    "@babel/preset-env": "7.4.4",
     "add": "2.0.6",
     "aframe": "0.9.0",
     "aframe-extras": "6.0.0",
     "axios": "0.18.0",
+    "babel-plugin-remove-graphql-queries": "2.6.3",
     "eslint-plugin-graphql": "3.0.3",
     "gatsby": "^2.0.76",
     "gatsby-image": "2.0.35",
@@ -17,7 +19,7 @@
     "gatsby-plugin-sass": "^2.0.7",
     "gatsby-plugin-sharp": "2.0.32",
     "gatsby-source-filesystem": "2.0.28",
-    "gatsby-source-graphql": "2.0.10",
+    "gatsby-source-graphql": "2.0.18",
     "gatsby-transformer-json": "2.1.8",
     "gatsby-transformer-remark": "2.2.6",
     "gatsby-transformer-sharp": "2.1.17",
@@ -29,7 +31,8 @@
     "react-dom": "^16.6.3",
     "react-helmet": "^5.2.0",
     "react-redux": "6.0.1",
-    "redux": "4.0.1"
+    "redux": "4.0.1",
+    "webpack": "4.30.0"
   },
   "keywords": [
     "gatsby",
@@ -39,23 +42,38 @@
   ],
   "license": "MIT",
   "scripts": {
+    "poreinstall": "npm install babel-loader @babel/core --save-dev",
+    "storybook": "start-storybook -s ./public -p 9001",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write '**/*.js'",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "deployMaster": "gatsby build && gh-pages -d public -b master",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
   },
   "peerDependencies": {
     "gatsby-cli": "^2.5.4"
   },
   "devDependencies": {
+    "@babel/core": "7.4.4",
+    "@storybook/react": "5.0.11",
     "babel-jest": "24.7.1",
+    "babel-loader": "8.0.5",
+    "babel-plugin-dynamic-import-node": "2.2.0",
     "babel-preset-gatsby": "0.1.11",
+    "enzyme": "3.9.0",
+    "enzyme-adapter-react-16": "1.12.1",
     "identity-obj-proxy": "3.0.0",
     "jest": "24.7.1",
+    "jest-environment-enzyme": "7.0.2",
+    "jest-enzyme": "7.0.2",
     "prettier": "^1.14.2",
     "react-test-renderer": "16.8.6"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "jest-enzyme",
+    "testEnvironment": "enzyme"
   },
   "repository": {
     "type": "git",

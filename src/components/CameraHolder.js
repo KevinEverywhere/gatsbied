@@ -13,10 +13,35 @@ class CameraHolder extends React.PureComponent {
     });
     videoElem.srcObject = null;
   }
-  setVideo=()=>{
+  makeActive=()=>{
     const me=this;
+    navigator.mediaDevices.getUserMedia({ audio: true, video: { facingMode: this.props.facingMode }})
+    .then(function(stream) {
+      var video = document.getElementById(me.props.camera);
+      if ("srcObject" in video) {
+        video.srcObject=stream;
+      }else{
+        video.src = window.URL.createObjectURL(stream);
+      }
+      video.onloadedmetadata = function(e) {
+        video.play();
+      };
+    })
+    .catch((oops)=>{
+      console.log('bad camera')
+    });
+  }
+  makeInactive=()=>{
+    try{
+      var video = document.getElementById(this.props.camera);
+      this.stopVideo(video);
+    }catch(oops){
+       // video not playing
+    }
+  }
+  setVideo=()=>{
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
-      const srcTarget = `src: #${me.props.camera}`
+      const srcTarget = `side:double;src: #${this.props.camera}`
       this.setState({
         activeCamera:(
           <a-entity id={this.props.id} position={this.props.position} rotation={this.props.rotation}>
@@ -26,30 +51,14 @@ class CameraHolder extends React.PureComponent {
           </a-entity>
         )
       })
-      navigator.mediaDevices.getUserMedia({ audio: true, video: { facingMode: this.props.facingMode }})
-      .then(function(stream) {
-        var video = document.getElementById(me.props.camera);
-        if ("srcObject" in video) {
-          video.srcObject=stream;
-        }else{
-          video.src = window.URL.createObjectURL(stream);
-        }
-        video.onloadedmetadata = function(e) {
-          video.play();
-        };
-      })
-      .catch((oops)=>{
-        console.log('bad camera')
-      });
+      this.makeActive();
+      if(this.props.active!==true){
+        this.makeInactive();
+      }
     }
   }
   componentWillUnmount(){
-    try{
-      var video = document.getElementById(this.props.camera);
-      this.stopVideo(video);
-    }catch(oops){
-       // video not playing
-    }
+    this.makeInactive();
   }
   componentDidMount(){
     import('aframe')

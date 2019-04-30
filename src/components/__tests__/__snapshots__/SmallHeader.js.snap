@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SmallHeader renders correctly 1`] = `
+<header
+  id="header"
+  style={Object {}}
+>
+  <nav>
+    <a
+      href="/"
+    >
+      <div
+        className="smlogo"
+      >
+        <span
+          className="icon fa-bicycle"
+        />
+      </div>
+    </a>
+    <ul>
+      <li>
+        <a
+          href="work"
+        >
+          Work
+        </a>
+      </li>
+      <li>
+        <a
+          href="creative"
+        >
+          Creative
+        </a>
+      </li>
+      <li>
+        <a
+          href="contact"
+        >
+          Contact
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+`;
