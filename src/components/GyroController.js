@@ -31,20 +31,40 @@ class GyroController extends React.Component {
   }
 
   keyHandler = (event) => {
+    console.log(event.target);
+    console.log(event);
+    // event.preventDefault();
     const keyName = event.key;
     console.log(keyName);
     switch(keyName){
       case "ArrowRight":
-        this.moveOnVector('xPos', this.state.distanceBetween/4);
+        this.moveOnVector(
+          this.state.vector.charAt(0) === 'z' ? 'xPos' : 'zPos',
+          this.state.distanceBetween/4,
+          this.state.distanceBetween/10);
         break;
       case "ArrowLeft":
-        this.moveOnVector('xNeg', this.state.distanceBetween/4);
+        this.moveOnVector(
+          this.state.vector.charAt(0) === 'z' ? 'xNeg' : 'zNeg',
+          this.state.distanceBetween/4,
+          this.state.distanceBetween/10);
+        // this.moveOnVector('xNeg', this.state.distanceBetween/4, this.state.distanceBetween/10);
         break;
       case "ArrowUp":
-        this.moveOnVector('yPos', this.state.distanceBetween/4);
+        this.moveOnVector(
+          this.state.vector.charAt(0) === 'z' ? 'zPos' : 'xPos',
+          this.state.distanceBetween/4,
+          this.state.distanceBetween/10);
+        // this.moveOnVector('zPos', this.state.distanceBetween/4, this.state.distanceBetween/10);
         break;
       case "ArrowDown":
-        this.moveOnVector('yNeg', this.state.distanceBetween/4);
+        this.moveOnVector(
+          this.state.vector.charAt(0) === 'z' ? 'zNeg' : 'xNeg',
+          this.state.distanceBetween/4,
+          this.state.distanceBetween/10);
+          // 'zNeg', this.state.distanceBetween/4, this.state.distanceBetween/10);
+        break;
+      default:
         break;
     }
     // if (keyName === 'Control') {
@@ -106,13 +126,17 @@ class GyroController extends React.Component {
         vector = this.state.vector;
         break;
     }
+    console.log(`${this.state.vector}, ${theDir}`);
     return vector;
   }
   getOld = () =>{
-    const old=document.querySelector('#rig').getAttribute('position');
+    const old={
+      pos: document.querySelector('#rig').getAttribute('position'),
+      rot: document.querySelector('#rig').getAttribute('rotation'),
+    };
     if(
-      (Math.abs(old.x)<this.state.distanceBetween/2) &&
-      (Math.abs(old.z)<this.state.distanceBetween/2)
+      (Math.abs(old.pos.x)<this.state.distanceBetween/2) &&
+      (Math.abs(old.pos.z)<this.state.distanceBetween/2)
     ){
       if(this.state.vector !== this.selectView()){
         this.setState({ vector: this.selectView() })
@@ -121,46 +145,69 @@ class GyroController extends React.Component {
     return old;
   }
 
-  moveOnVector=(which, what)=>{
+  testRotation=(old, which, rot)=>{
+    document.querySelector('#rig').setEntityAttribute('rotation',
+      old.rot,{
+        x: old.rot.x,
+        y:old.rot.y+rot,
+        z:old.rot.z
+      }
+    );
+  }
+  /**
+   x:(old.rotation.x + rot),
+   y:old.rotation.y,
+   z:old.rotation.z
+   */
+
+  moveOnVector=(which, what, rot)=>{
     const old = this.getOld();
-    switch(which){
-      case 'xPos':
-        document.querySelector('#rig').setEntityAttribute('position',
-          old,{
-            x:(old.x + what),
-            y:old.y,
-            z:old.z
-          }
-        );
-        break;
-      case 'xNeg':
-        document.querySelector('#rig').setEntityAttribute('position',
-          old,{
-            x:(old.x - what),
-            y:old.y,
-            z:old.z
-          }
-        );
-        break;
-      case 'zNeg':
-        document.querySelector('#rig').setEntityAttribute('position',
-          old,{
-            x:old.x,
-            y:old.y,
-            z:(old.z + what)
-          });
-        break;
-      case 'zPos':
-        document.querySelector('#rig').setEntityAttribute('position',
-          old,{
-            x:old.x,
-            y:old.y,
-            z:(old.z - what)
-          }
-        );
-        break;
-      default:
-        break;
+    console.log(`${this.state.vector}, which ${which}`);
+    if(which.charAt(0)!==this.state.vector.charAt(0)){
+      console.log('will rotate')
+      this.testRotation(old, which.charAt(0), (which.indexOf('Pos')===-1 ? rot : -rot))
+    }else{
+      console.log('will move')
+      switch(which){
+        case 'xPos':
+          document.querySelector('#rig').setEntityAttribute('position',
+            old.pos,{
+              x:(old.pos.x + what),
+              y:old.pos.y,
+              z:old.pos.z
+            }
+          );
+          break;
+        case 'xNeg':
+          document.querySelector('#rig').setEntityAttribute('position',
+            old.pos,{
+              x:(old.pos.x - what),
+              y:old.pos.y,
+              z:old.pos.z
+            }
+          );
+          break;
+        case 'zNeg':
+          document.querySelector('#rig').setEntityAttribute('position',
+            old.pos,{
+              x:old.pos.x,
+              y:old.pos.y,
+              z:(old.pos.z + what)
+            }
+          );
+          break;
+        case 'zPos':
+          document.querySelector('#rig').setEntityAttribute('position',
+            old.pos,{
+              x:old.pos.x,
+              y:old.pos.y,
+              z:(old.pos.z - what)
+            }
+          );
+          break;
+        default:
+          break;
+      }
     }
   }
 
