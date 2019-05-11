@@ -68,7 +68,7 @@ class MainExperimental extends React.PureComponent {
             <main>
               <a-scene cursor="rayOrigin: mouse" embedded style={{width:'100%',height:'100%'}}>
                 <Assets data={this.props.data} />
-                <Entities data={this.props.data} />
+                <Entities experimental="true" data={this.props.data} />
                 <Cameras data={this.props.data} />
                 { this.props.children }
               </a-scene>

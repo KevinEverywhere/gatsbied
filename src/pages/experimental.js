@@ -6,6 +6,8 @@ import SmallHeader from '../components/SmallHeader'
 import MainExperimental from '../components/MainExperimental'
 import Footer from '../components/Footer'
 import CameraHolder from '../components/CameraHolder'
+// import AReactImage from '../components/AReactImage'
+// import { state } from '../components/Assets';
 
 class ExperimentalPage extends React.Component {
   constructor(props) {
@@ -17,6 +19,7 @@ class ExperimentalPage extends React.Component {
   }
 
   componentDidMount () {
+    // console.log(state.assets);
     this.timeoutId = setTimeout(() => {
       let s=document.querySelector('#instructions').style;
       setInterval(() => {
@@ -75,6 +78,22 @@ class ExperimentalPage extends React.Component {
 
 export default ExperimentalPage
 
+/*
+
+
+{ SingleImage() }
+
+{ EyeChart() }
+
+const singleImageD = {src:'#earthDegrees'};
+const eyeChartD = {src:'#eyeChart'};
+
+const SingleImage = () => <AReactImage spherical="true" fluid={singleImageD} radius="4000" position="0 0 0" rotation="0 0 0" />;
+
+const EyeChart = () => <AReactImage src="#eyeChart" fluid={eyeChartD} height={650} width={300} position="1200 0 0" rotation="0 90 0" />;
+
+ */
+
 const Instructions = () => {
   return (
     <div className="content" id="instructions">
@@ -124,4 +143,14 @@ query experimentalPageQuery{
                   id="cameraRig2"
                  />
 
- */
+                 {
+                 // geometry="primitive: sphere; radius: 2000" material="opacity:0.5" position="0 0 0" />}
+                 //              <a-image src="#earthDegrees" geometry="primitive: sphere; radius: 2000" material="opacity:0.5" position="0 0 0" />
+                 //
+                 //              <a-entity geometry={radius} position={props.position} rotation={props.rotation}>
+                 //              <a-image geometry={radius} src={props.fluid.src} position="0 0 0" />
+                 //              </a-entity>
+                 //
+                 //              <a-image geometry={radius} src={props.fluid.src} position="0 0 0" />
+                 }
+*/

@@ -26,6 +26,7 @@
     "gh-pages": "2.0.1",
     "graphcool": "0.11.6",
     "graphql": "14.1.1",
+    "html2canvas": "1.0.0-rc.1",
     "node-sass": "^4.11.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
