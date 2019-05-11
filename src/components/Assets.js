@@ -9,8 +9,6 @@ class Assets extends React.PureComponent {
     this.state={assets:null}
   }
   /*
-
-   */
   buildHTMLAssets = () => {
     var styleEl = document.createElement('style');
     document.head.appendChild(styleEl);
@@ -47,6 +45,8 @@ class Assets extends React.PureComponent {
       });
     })
   }
+{ this.buildHTMLAssets() }
+   */
   buildImageAssets = () => {
     const imageAssets = this.props.data.allFile.edges.map((node, index) => {
       if(node && node.node && node.node.childImageSharp && node.node.childImageSharp.fluid){
@@ -71,7 +71,7 @@ class Assets extends React.PureComponent {
             <a-assets>
               <img crossOrigin="anonymous" alt="universe background" src={withPrefix('/images/universe_4096.jpg')} id="universe_4096Image" />
               { this.buildImageAssets() }
-              { this.buildHTMLAssets() }
+
               <img crossOrigin="anonymous" alt="earth with Degrees" src={withPrefix('/assets/equirectangularWithDegrees.jpg')} id="earthDegrees" />
 
               <img crossOrigin="anonymous" alt="eye chart" src={withPrefix('/assets/eyeChart_3000_6526.jpg')} id="eyeChart" />
