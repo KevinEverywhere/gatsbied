@@ -1,5 +1,5 @@
 import React from 'react'
-import html2canvas from 'html2canvas';
+// import html2canvas from 'html2canvas';
 import { withPrefix } from 'gatsby';
 import DynamicGatsbyImage from './DynamicGatsbyImage';
 
@@ -8,6 +8,7 @@ class Assets extends React.PureComponent {
     super();
     this.state={assets:null}
   }
+  /*
   buildHTMLAssets = () => {
     var styleEl = document.createElement('style');
     document.head.appendChild(styleEl);
@@ -43,6 +44,7 @@ class Assets extends React.PureComponent {
         console.log(error);
       });
   }
+   */
   buildImageAssets = () => {
     const imageAssets = this.props.data.allFile.edges.map((node, index) => {
       if(node && node.node && node.node.childImageSharp && node.node.childImageSharp.fluid){
