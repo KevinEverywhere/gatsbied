@@ -89,24 +89,16 @@ class Entities extends React.PureComponent {
     if(this.props.experimental){
       return (
         <>
+        <a-sky geometry="radius:8000" color="#fff" src="#universe_4096Image" />
           <a-image src="#earthDegrees" geometry="primitive: sphere; radius: 4000" material="side: double" position="0 0 0" />
           <a-image src="#eyeChart" height="650" width="300" position="1000 150 0" rotation="0 270 0" />
         </>
       );
     }
-    return '';
+    return <a-sky geometry="radius:8000" color="#fff" src="#universe_4096Image" />;
   }
 
-  builtAframeAssets = () => {
-    // This is for putting all types of aframe assets. In this case, there is a
-    // plane that is used to click back and forth to full screen.
-    return (
-      <>
-        <a-sky geometry="radius:8000" color="#fff" src="#universe_4096Image" />
-        { this.exper() }
-      </>
-    );
-  }
+  builtAframeAssets = () => this.exper();
 
   componentDidMount(){
     import('aframe')
