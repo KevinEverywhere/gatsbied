@@ -9,6 +9,8 @@ class Assets extends React.PureComponent {
     this.state={assets:null}
   }
   /*
+
+   */
   buildHTMLAssets = () => {
     var styleEl = document.createElement('style');
     document.head.appendChild(styleEl);
@@ -30,7 +32,7 @@ class Assets extends React.PureComponent {
     this.instructions.firstWords.appendChild(p);
     document.body.appendChild(this.instructions.firstWords);
     // document.querySelector('#___gatsby').appendChild(this.instructions.firstWords);
-    // import('html2canvas').then((html2canvas) => {
+    import('html2canvas').then((html2canvas) => {
       html2canvas(this.instructions.firstWords).then(function(canvas) {
         const converting = canvas.toDataURL();
         const img = <img crossOrigin="anonymous" alt="instructions" src={converting} id="forHtml2CanvasImg" />;
@@ -43,8 +45,8 @@ class Assets extends React.PureComponent {
         console.log('failed after typeof(canvas)');
         console.log(error);
       });
+    })
   }
-   */
   buildImageAssets = () => {
     const imageAssets = this.props.data.allFile.edges.map((node, index) => {
       if(node && node.node && node.node.childImageSharp && node.node.childImageSharp.fluid){
