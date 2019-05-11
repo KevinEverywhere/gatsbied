@@ -71,7 +71,7 @@ class Assets extends React.PureComponent {
             <a-assets>
               <img crossOrigin="anonymous" alt="universe background" src={withPrefix('/images/universe_4096.jpg')} id="universe_4096Image" />
               { this.buildImageAssets() }
-              { /* this.buildHTMLAssets() */ }
+              { this.buildHTMLAssets() }
               <img crossOrigin="anonymous" alt="earth with Degrees" src={withPrefix('/assets/equirectangularWithDegrees.jpg')} id="earthDegrees" />
 
               <img crossOrigin="anonymous" alt="eye chart" src={withPrefix('/assets/eyeChart_3000_6526.jpg')} id="eyeChart" />
