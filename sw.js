@@ -26,45 +26,39 @@ workbox.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-052af692ecbd895c75d2.js"
+    "url": "webpack-runtime-a09649603470bc3ef8b5.js"
   },
   {
-    "url": "app-2b2c68f07bd62773cb41.js"
+    "url": "app-292a1cf9e3849358fdda.js"
   },
   {
-    "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-546931aa1669e700d80e.js"
+    "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-29b7a98934c8cbbb1268.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "7b21c3d9277e6e8cadc31ae40182939e"
+    "revision": "ff4c1eedd19aeb2ef8f47423206a133a"
   },
   {
-    "url": "2.13e139671fe6929491ee.css"
+    "url": "styles.1b0ea04911cc6fa11c26.css"
   },
   {
-    "url": "styles.5e0e4c8b593ffdedb59d.css"
+    "url": "1-c52aab6d8c43e6d9ec19.js"
   },
   {
-    "url": "component---src-pages-404-js-905ee1b4a8f17be60aab.js"
+    "url": "component---src-pages-404-js-fb997b8c3b9a06797f3f.js"
   },
   {
-    "url": "2-e35d81f9857ea7fd3f17.js"
+    "url": "styles-13d2ee47eddc5325ccbc.js"
   },
   {
-    "url": "1-248d9fbd7aae7bca4b08.js"
+    "url": "static/d/285/path---404-html-516-62a-0SUcWyAf8ecbYDsMhQkEfPzV8.json"
   },
   {
-    "url": "styles-7a9a9c8c6e549b537e55.js"
-  },
-  {
-    "url": "static/d/164/path---404-html-516-62a-NZuapzHg3X9TaN1iIixfv1W23E.json"
-  },
-  {
-    "url": "static/d/520/path---offline-plugin-app-shell-fallback-a-30-c5a-NZuapzHg3X9TaN1iIixfv1W23E.json"
+    "url": "static/d/604/path---offline-plugin-app-shell-fallback-a-30-c5a-BawJvyh36KKFwbrWPg4a4aYuc8.json"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "0c6cdd7500bcac79e01d0fbfff384984"
+    "revision": "cafc88eb7fef01b6781ae25c8db321af"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
@@ -85,7 +79,7 @@ const navigationRoute = new workbox.routing.NavigationRoute(({ event }) => {
   return idbKeyval.get(WHITELIST_KEY).then((customWhitelist = []) => {
     // Respond with the offline shell if we match the custom whitelist
     if (customWhitelist.includes(pathname)) {
-      const offlineShell = `/gatsbied/offline-plugin-app-shell-fallback/index.html`
+      const offlineShell = `/offline-plugin-app-shell-fallback/index.html`
       const cacheName = workbox.core.cacheNames.precache
 
       return caches.match(offlineShell, { cacheName }).then(cachedResponse => {
@@ -157,7 +151,7 @@ const messageApi = {
 
     pathnames = pathnames.map(({ pathname, includesPrefix }) => {
       if (!includesPrefix) {
-        return `/gatsbied${pathname}`
+        return `${pathname}`
       } else {
         return pathname
       }
